@@ -19,4 +19,20 @@
  * License URI:       https://www.mozilla.org/en-US/MPL/2.0/
  */
 
-require_once \plugin_dir_path( __FILE__ ) . 'src/bootstrap.php';
+/**
+ * Before we start the party, let's define some needed constants.
+ *
+ * @dev-note:
+ *     These constants are organized alphabetically, manually. When adding
+ *     constants, let's keep them in order. 🙏🏻 Thank you!
+ */
+foreach ( [
+	'DIR'     => \plugin_dir_path( __FILE__ ),
+	'URL'     => \plugin_dir_url( __FILE__ ),
+	'VERSION' => \get_file_data( __FILE__, [ 'Version' => 'Version' ], 'plugin' )['Version'],
+] as $name => $value ) {
+	define( 'S4B_' . $name, $value );
+}
+
+// 🥳 Let's get this party started.
+require_once S4B_DIR . 'src/bootstrap.php';
