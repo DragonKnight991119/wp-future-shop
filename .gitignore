@@ -1,0 +1,4 @@
+# Development Stuff
+.wp-env.override.json
+node_modules
+vendor

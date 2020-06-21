@@ -1,0 +1,35 @@
+{
+    "name": "stripe-for-business",
+    "version": "0.0.1",
+    "description": "",
+    "scripts": {
+        "cli:wp": "wp-env run cli wp",
+        "env:clean": "wp-env clean",
+        "env:destroy": "wp-env destroy",
+        "env:logs": "wp-env logs",
+        "env:start": "wp-env start",
+        "env:stop": "wp-env stop"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/juko-labs/stripe-for-business.git"
+    },
+    "keywords": [
+        "stripe",
+        "ecommerce",
+        "wordpress",
+        "plugin",
+        "store",
+        "simple"
+    ],
+    "author": "Justin Kopepasah <justin@kopepasah.com>",
+    "license": "MPL-2.0",
+    "bugs": {
+        "url": "https://github.com/juko-labs/stripe-for-business/issues"
+    },
+    "homepage": "https://github.com/juko-labs/stripe-for-business#readme",
+    "dependencies": {},
+    "devDependencies": {
+        "@wordpress/env": "^1.5.0"
+    }
+}

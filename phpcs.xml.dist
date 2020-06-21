@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="Stripe for Business Plugin Coding Standards">
+	<arg name="extensions" value="php" />
+	<arg name="colors" />
+
+	<rule ref="WordPress-Docs" />
+	<rule ref="WordPress-Extra" />
+
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/tests/*</exclude-pattern>
+</ruleset>

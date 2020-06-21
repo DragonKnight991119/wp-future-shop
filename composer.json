@@ -1,0 +1,17 @@
+{
+    "name": "juko-labs/stripe-for-business",
+    "type": "wordpress-plugin",
+    "license": "MPL-2.0",
+    "authors": [
+        {
+            "name": "Justin Kopepasah",
+            "email": "justin@kopepasah.com"
+        }
+    ],
+    "require": {
+        "stripe/stripe-php": "^7.37"
+    },
+    "require-dev": {
+        "juko-labs/php-coding-standards": "^0.1.2"
+    }
+}
