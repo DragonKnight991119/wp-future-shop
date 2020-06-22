@@ -133,16 +133,16 @@
         },
         {
             "name": "juko-labs/php-coding-standards",
-            "version": "0.1.3",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/juko-labs/php-coding-standards.git",
-                "reference": "c42ec039735869a2b07cf14997278ef2c3fac888"
+                "reference": "489956051c6075208f88c1fb6a0d5dfe20c35456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/juko-labs/php-coding-standards/zipball/c42ec039735869a2b07cf14997278ef2c3fac888",
-                "reference": "c42ec039735869a2b07cf14997278ef2c3fac888",
+                "url": "https://api.github.com/repos/juko-labs/php-coding-standards/zipball/489956051c6075208f88c1fb6a0d5dfe20c35456",
+                "reference": "489956051c6075208f88c1fb6a0d5dfe20c35456",
                 "shasum": ""
             },
             "require": {
@@ -163,7 +163,7 @@
                 }
             ],
             "description": "PHP coding standards for building WordPress applications.",
-            "time": "2020-06-21T20:22:25+00:00"
+            "time": "2020-06-22T03:37:18+00:00"
         },
         {
             "name": "phpcompatibility/php-compatibility",

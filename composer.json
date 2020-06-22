@@ -8,10 +8,21 @@
             "email": "justin@kopepasah.com"
         }
     ],
+    "autoload": {
+        "files": [
+            "lib/system/compatability.php"
+        ],
+        "psr-4": {
+            "S4B\\": "src"
+        }
+    },
     "require": {
         "stripe/stripe-php": "^7.37"
     },
     "require-dev": {
         "juko-labs/php-coding-standards": "^0.1.2"
+    },
+    "scripts": {
+        "phpcs": "./vendor/bin/phpcs ."
     }
 }

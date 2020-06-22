@@ -27,12 +27,16 @@
  *     constants, let's keep them in order. 🙏🏻 Thank you!
  */
 foreach ( [
-	'DIR'     => \plugin_dir_path( __FILE__ ),
-	'URL'     => \plugin_dir_url( __FILE__ ),
-	'VERSION' => \get_file_data( __FILE__, [ 'Version' => 'Version' ], 'plugin' )['Version'],
+	'FILE'    => __FILE__,
+	'DIR'     => plugin_dir_path( __FILE__ ),
+	'URL'     => plugin_dir_url( __FILE__ ),
+	'VERSION' => get_file_data( __FILE__, [ 'Version' => 'Version' ], 'plugin' )['Version'],
 ] as $name => $value ) {
 	define( 'S4B_' . $name, $value );
 }
 
+// Load up the party supplies.
+require_once S4B_DIR . 'vendor/autoload.php';
+
 // 🥳 Let's get this party started.
-require_once S4B_DIR . 'src/bootstrap.php';
+new S4B\Bootstrap( __FILE__ );
