@@ -8,7 +8,8 @@
         "env:destroy": "wp-env destroy",
         "env:logs": "wp-env logs",
         "env:start": "wp-env start",
-        "env:stop": "wp-env stop"
+        "env:stop": "wp-env stop",
+        "postinstall": "composer install"
     },
     "repository": {
         "type": "git",
