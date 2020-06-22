@@ -16,9 +16,6 @@ class Bootstrap {
 	 * Bootstrap constructor.
 	 */
 	public function __construct() {
-		$this->load_hooks( __CLASS__ );
-
-		// Register plugin on/off hooks.
 		register_activation_hook( S4B_FILE, [ $this, 'activate' ] );
 		register_deactivation_hook( S4B_FILE, [ $this, 'deactivate' ] );
 	}
