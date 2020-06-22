@@ -7,7 +7,7 @@
  * @license   MPL-2.0
  *
  * Plugin Name:       Stripe for Business
- * Plugin URI:        https://juko.com/wp/plugins/stripe-for-business
+ * Plugin URI:        https://juko.co/wp/plugins/stripe-for-business
  * Description:       Simple. Fast. Secure. Run your store with Stripe for Business, the only plugin with full Stripe integration to manage your business using WordPress.
  * Version:           0.0.1
  * Requires at least: 5.4
