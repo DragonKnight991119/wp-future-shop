@@ -37,7 +37,11 @@ class Hooks {
 						}
 
 						if ( empty( $i ) || empty( $hook[ $i + 1 ] ) ) {
-							// @todo Throw a warning that hook was found, but no type or tag was found.
+							/**
+							 * Use this section to check for a type tag.
+							 *
+							 * @todo Throw a warning that hook was found, but no type or tag was found.
+							 */
 							return;
 						}
 
