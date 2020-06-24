@@ -8,6 +8,7 @@
 namespace S4B\Admin;
 
 use S4B\WP\Hooks;
+use S4B\Config\Data;
 
 /**
  * Admin Menus
@@ -92,12 +93,7 @@ class Menu extends Hooks implements Admin {
 	 * @wp.hook action admin_menu
 	 */
 	public static function add_submenu_pages() {
-		$submenus = [
-			__( 'products', 'stripe-for-business' ),
-			__( 'customers', 'stripe-for-business' ),
-		];
-
-		foreach ( $submenus as $submenu ) {
+		foreach ( Data::submenu_pages() as $submenu ) {
 			\add_submenu_page(
 				self::SLUG,
 				ucwords( $submenu ),
