@@ -3,13 +3,15 @@
     "version": "0.0.1",
     "description": "",
     "scripts": {
+        "postinstall": "composer install",
+        "start": "npm run env:start",
+        "stop": "npm run env:stop",
         "cli:wp": "wp-env run cli wp",
         "env:clean": "wp-env clean",
         "env:destroy": "wp-env destroy",
         "env:logs": "wp-env logs",
         "env:start": "wp-env start",
-        "env:stop": "wp-env stop",
-        "postinstall": "composer install"
+        "env:stop": "wp-env stop"
     },
     "repository": {
         "type": "git",
