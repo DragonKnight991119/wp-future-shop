@@ -13,7 +13,7 @@ use S4B\Config\Data;
 /**
  * Admin Menus
  */
-class Menu extends Hooks implements Admin {
+class Pages implements Admin {
 
 	/**
 	 * Main menu position.
@@ -40,7 +40,7 @@ class Menu extends Hooks implements Admin {
 	 * Menu Constructor
 	 */
 	public function __construct() {
-		$this->load_hooks( __CLASS__ );
+		Hooks::load( __CLASS__ );
 	}
 
 	/**

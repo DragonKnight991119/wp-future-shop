@@ -21,7 +21,7 @@ class Hooks {
 	 *
 	 * @return void
 	 */
-	public function load_hooks( $class ) {
+	public static function load( $class ) {
 		array_filter(
 			get_class_methods( $class ),
 			function( $name ) use ( $class ) {
