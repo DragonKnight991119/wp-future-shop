@@ -1,6 +1,6 @@
 <?php
 /**
- * Configuration data, accesed fomr the object.
+ * Configuration data, accesed from the object.
  *
  * @package S4B
  */
