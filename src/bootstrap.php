@@ -45,4 +45,13 @@ class Bootstrap {
 	public static function admin() {
 		new Admin\Pages( __CLASS__ );
 	}
+
+	/**
+	 * Registers API Connectors.
+	 *
+	 * @wp.hook action rest_api_init
+	 */
+	public static function connectors() {
+		new Connectors\Stripe\Products( __CLASS__ );
+	}
 }
