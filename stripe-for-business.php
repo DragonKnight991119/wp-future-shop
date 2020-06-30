@@ -27,8 +27,8 @@
  *     constants, let's keep them in order. 🙏🏻 Thank you!
  */
 foreach ( [
-	'FILE'    => __FILE__,
 	'DIR'     => plugin_dir_path( __FILE__ ),
+	'FILE'    => __FILE__,
 	'URL'     => plugin_dir_url( __FILE__ ),
 	'VERSION' => get_file_data( __FILE__, [ 'Version' => 'Version' ], 'plugin' )['Version'],
 ] as $name => $value ) {
