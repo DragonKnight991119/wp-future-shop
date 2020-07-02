@@ -4,6 +4,13 @@
     "port": 8280,
     "config": {
         "WP_DEBUG": true,
-        "SCRIPT_DEBUG": true
+        "SAVEQUERIES": true,
+        "SCRIPT_DEBUG": true,
+        "STYLE_DEBUG": true,
+        "CONCATENATE_SCRIPTS": false,
+        "COMPRESS_SCRIPTS": false,
+        "COMPRESS_CSS": false,
+        "FORCE_SSL_LOGIN": false,
+        "FORCE_SSL_ADMIN": false
     }
 }
