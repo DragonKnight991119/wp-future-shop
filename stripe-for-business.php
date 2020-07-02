@@ -30,7 +30,7 @@ abstract class Plugin {
 	/**
 	 * Gets the plugin directory path.
 	 *
-	 * @return void
+	 * @return string Plugin dir path.
 	 */
 	public static function dir() {
 		return plugin_dir_path( __FILE__ );
@@ -39,7 +39,7 @@ abstract class Plugin {
 	/**
 	 * Gets the plugin file path.
 	 *
-	 * @return void
+	 * @return string Plugin file.
 	 */
 	public static function file() {
 		return __FILE__;
@@ -48,7 +48,7 @@ abstract class Plugin {
 	/**
 	 * Gets the plugin url.
 	 *
-	 * @return void
+	 * @return string Plugin url.
 	 */
 	public static function url() {
 		return plugin_dir_url( __FILE__ );
@@ -57,7 +57,7 @@ abstract class Plugin {
 	/**
 	 * Gets the plugin version.
 	 *
-	 * @return void
+	 * @return string Plugin version.
 	 */
 	public static function version() {
 		return get_file_data( __FILE__, [ 'Version' => 'Version' ], 'plugin' )['Version'];
