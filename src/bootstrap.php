@@ -19,8 +19,8 @@ class Bootstrap {
 	public function __construct() {
 		Hooks::load( __CLASS__ );
 
-		register_activation_hook( S4B_FILE, [ $this, 'activate' ] );
-		register_deactivation_hook( S4B_FILE, [ $this, 'deactivate' ] );
+		register_activation_hook( Plugin::file(), [ $this, 'activate' ] );
+		register_deactivation_hook( Plugin::file(), [ $this, 'deactivate' ] );
 	}
 
 	/**

@@ -19,24 +19,53 @@
  * License URI:       https://www.mozilla.org/en-US/MPL/2.0/
  */
 
+namespace S4B;
+
 /**
- * Before we start the party, let's define some needed constants.
+ * Plugin Config
  *
- * @dev-note:
- *     These constants are organized alphabetically, manually. When adding
- *     constants, let's keep them in order. 🙏🏻 Thank you!
+ * Static class to get plugin details... required for #allTheThings
  */
-foreach ( [
-	'DIR'     => plugin_dir_path( __FILE__ ),
-	'FILE'    => __FILE__,
-	'URL'     => plugin_dir_url( __FILE__ ),
-	'VERSION' => get_file_data( __FILE__, [ 'Version' => 'Version' ], 'plugin' )['Version'],
-] as $name => $value ) {
-	define( 'S4B_' . $name, $value );
+abstract class Plugin {
+	/**
+	 * Gets the plugin directory path.
+	 *
+	 * @return void
+	 */
+	public static function dir() {
+		return plugin_dir_path( __FILE__ );
+	}
+
+	/**
+	 * Gets the plugin file path.
+	 *
+	 * @return void
+	 */
+	public static function file() {
+		return __FILE__;
+	}
+
+	/**
+	 * Gets the plugin url.
+	 *
+	 * @return void
+	 */
+	public static function url() {
+		return plugin_dir_url( __FILE__ );
+	}
+
+	/**
+	 * Gets the plugin version.
+	 *
+	 * @return void
+	 */
+	public static function version() {
+		return get_file_data( __FILE__, [ 'Version' => 'Version' ], 'plugin' )['Version'];
+	}
 }
 
 // Load up the party supplies.
-require_once S4B_DIR . 'vendor/autoload.php';
+require_once Plugin::dir() . 'vendor/autoload.php';
 
 // 🥳 Let's get this party started.
-new S4B\Bootstrap( __FILE__ );
+new Bootstrap( __FILE__ );
