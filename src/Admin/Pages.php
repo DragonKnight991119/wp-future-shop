@@ -2,13 +2,13 @@
 /**
  * Admin Menu Pages
  *
- * @package S4B
+ * @package FutureShop
  */
 
-namespace S4B\Admin;
+namespace FutureShop\Admin;
 
-use S4B\WP\Hooks;
-use S4B\Config\Data;
+use FutureShop\WP\Hooks;
+use FutureShop\Config\Data;
 
 /**
  * Admin Menus
@@ -27,7 +27,7 @@ class Pages implements Admin {
 	 *
 	 * @const number $position Admin menu position in WordPress.
 	 */
-	const SLUG = 'stripe-for-business';
+	const SLUG = 'future-shop';
 
 	/**
 	 * Main menu capabilities.
@@ -75,8 +75,8 @@ class Pages implements Admin {
 	 */
 	public static function add_menu_page() {
 		\add_menu_page(
-			__( 'Store', 'stripe-for-business' ),
-			__( 'Store', 'stripe-for-business' ),
+			__( 'Store', 'future-shop' ),
+			__( 'Store', 'future-shop' ),
 			self::CAP,
 			self::SLUG,
 			[ __CLASS__, 'app' ],
@@ -111,6 +111,6 @@ class Pages implements Admin {
 	 * @return void
 	 */
 	public static function app() {
-		echo \wp_kses( '<div id="stripe-for-busiess">S4B</div>', [ 'div' => [ 'id' => [] ] ] );
+		echo \wp_kses( '<div id="future-shop">FutureShop</div>', [ 'div' => [ 'id' => [] ] ] );
 	}
 }

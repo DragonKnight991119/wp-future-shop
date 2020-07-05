@@ -4,10 +4,10 @@
  *
  * Validates system requirements are met in order to run this plugin.
  *
- * @package S4B
+ * @package FutureShop
  */
 
-namespace S4B\LIB\System\Compatability;
+namespace FutureShop\LIB\System\Compatability;
 
 /**
  * Validates the WordPress version is at a specific minimum.

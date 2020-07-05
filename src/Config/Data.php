@@ -2,10 +2,10 @@
 /**
  * Configuration data, accesed from the object.
  *
- * @package S4B
+ * @package FutureShop
  */
 
-namespace S4B\Config;
+namespace FutureShop\Config;
 
 /**
  * Static data class.
@@ -19,9 +19,9 @@ class Data {
 	 */
 	public static function submenu_pages() {
 		return [
-			__( 'products', 'stripe-for-business' ),
-			__( 'customers', 'stripe-for-business' ),
-			__( 'settings', 'stripe-for-business' ),
+			__( 'products', 'future-shop' ),
+			__( 'customers', 'future-shop' ),
+			__( 'settings', 'future-shop' ),
 		];
 	}
 }

@@ -4,12 +4,12 @@
  *
  * @todo Class needs documentation and refining.
  *
- * @package S4B
+ * @package FutureShop
  */
 
-namespace S4B\Connectors\Stripe;
+namespace FutureShop\Connectors\Stripe;
 
-use S4B\Connectors\Connector;
+use FutureShop\Connectors\Connector;
 
 class Core extends Connector {
 

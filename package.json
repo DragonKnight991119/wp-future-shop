@@ -1,5 +1,5 @@
 {
-    "name": "stripe-for-business",
+    "name": "future-shop",
     "version": "0.0.1",
     "description": "",
     "scripts": {
@@ -15,7 +15,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/juko-labs/stripe-for-business.git"
+        "url": "git+https://github.com/juko-labs/future-shop.git"
     },
     "keywords": [
         "stripe",
@@ -28,9 +28,9 @@
     "author": "Justin Kopepasah <justin@kopepasah.com>",
     "license": "MPL-2.0",
     "bugs": {
-        "url": "https://github.com/juko-labs/stripe-for-business/issues"
+        "url": "https://github.com/juko-labs/future-shop/issues"
     },
-    "homepage": "https://github.com/juko-labs/stripe-for-business#readme",
+    "homepage": "https://github.com/juko-labs/future-shop#readme",
     "dependencies": {},
     "devDependencies": {
         "@wordpress/env": "^1.5.0"

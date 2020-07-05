@@ -1,25 +1,25 @@
 <?php
 /**
- * Stripe for Business
+ * Future Shop
  *
- * @package   S4B
- * @author    Justin Kopepasah
- * @license   MPL-2.0
+ * @package FutureShop
+ * @author  Justin Kopepasah
+ * @license MPL-2.0
  *
- * Plugin Name:       Stripe for Business
- * Plugin URI:        https://juko.co/wp/plugins/stripe-for-business
- * Description:       Simple. Fast. Secure. Run your store with Stripe for Business, the only plugin with full Stripe integration to manage your business using WordPress.
+ * Plugin Name:       Future Shop
+ * Plugin URI:        https://juko.co/wp/plugins/future-shop
+ * Description:       Simple. Fast. Secure. Run your store with Future Shop, the only plugin with full Stripe integration to manage your business using WordPress.
  * Version:           0.0.1
- * Requires at least: 5.4
  * Requires PHP:      7.2
+ * Requires at least: 5.4
  * Author:            Justin Kopepasah
  * Author URI:        https://kopepasah.com
- * Text Domain:       stripe-for-business
+ * Text Domain:       future-shop
  * License:           MPL-2.0
  * License URI:       https://www.mozilla.org/en-US/MPL/2.0/
  */
 
-namespace S4B;
+namespace FutureShop;
 
 /**
  * Plugin Config

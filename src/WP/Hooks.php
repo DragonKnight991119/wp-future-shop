@@ -2,10 +2,10 @@
 /**
  * WordPress\Hooks
  *
- * @package S4B
+ * @package FutureShop
  */
 
-namespace S4B\WP;
+namespace FutureShop\WP;
 
 /**
  * WP\Hooks class

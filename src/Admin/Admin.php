@@ -2,9 +2,9 @@
 /**
  * Admin Interface
  *
- * @package S4B
+ * @package FutureShop
  */
 
-namespace S4B\Admin;
+namespace FutureShop\Admin;
 
 interface Admin {}

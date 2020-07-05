@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="Stripe for Business Plugin Coding Standards">
+<ruleset name="Future Shop Plugin Coding Standards">
 	<arg name="extensions" value="php" />
 	<arg name="colors" />
 

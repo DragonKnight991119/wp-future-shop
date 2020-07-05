@@ -4,10 +4,10 @@
  *
  * @todo Class needs documentation and refining.
  *
- * @package S4B
+ * @package FutureShop
  */
 
-namespace S4B\Connectors;
+namespace FutureShop\Connectors;
 
 abstract class Connector {
 

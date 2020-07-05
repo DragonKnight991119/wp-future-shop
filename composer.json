@@ -1,5 +1,6 @@
 {
-    "name": "juko-labs/stripe-for-business",
+    "name": "juko-labs/future-shop",
+    "description": "Future shop is a WordPress plugin built for running an online store using Stripe.",
     "type": "wordpress-plugin",
     "license": "MPL-2.0",
     "authors": [
@@ -13,7 +14,7 @@
             "lib/system/compatability.php"
         ],
         "psr-4": {
-            "S4B\\": "src"
+            "FutureShop\\": "src"
         }
     },
     "require": {

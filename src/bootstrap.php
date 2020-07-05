@@ -2,12 +2,12 @@
 /**
  * Bootstrap the plugin.
  *
- * @package S4B
+ * @package FutureShop
  */
 
-namespace S4B;
+namespace FutureShop;
 
-use S4B\WP\Hooks;
+use FutureShop\WP\Hooks;
 
 /**
  * Bootstrap class, primarily used for kicking things off and cleanup.
