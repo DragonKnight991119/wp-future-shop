@@ -8,7 +8,7 @@
  *
  * Plugin Name:       Future Shop
  * Plugin URI:        https://juko.co/wp/plugins/future-shop
- * Description:       Simple. Fast. Secure. Run your store with Future Shop, the only plugin with full Stripe integration to manage your business using WordPress.
+ * Description:       Simple. Fast. Secure. Run your store with Future Shop, the only plugin with native Stripe integration to manage your business using WordPress.
  * Version:           0.0.1
  * Requires PHP:      7.2
  * Requires at least: 5.4
