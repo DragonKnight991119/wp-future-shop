@@ -1,6 +1,6 @@
 # Future Shop 🛸
 
-Simple. Fast. Secure. Run your store with Future Shop, the only plugin with full Stripe integration to manage your business using WordPress.
+Simple. Fast. Secure. Run your store with Future Shop, the only plugin with native Stripe integration to manage your business using WordPress.
 
 ## Installation
 
