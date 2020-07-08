@@ -4,6 +4,8 @@
 	<arg name="colors" />
 
 	<rule ref="Juko Labs">
+		<exclude name="Generic.Commenting.Todo.TaskFound" />
+
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
 	</rule>

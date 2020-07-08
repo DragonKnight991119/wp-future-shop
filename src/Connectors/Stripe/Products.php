@@ -9,22 +9,42 @@
 
 namespace FutureShop\Connectors\Stripe;
 
+/**
+ * Products class.
+ */
 class Products extends Core {
 
+	/**
+	 * Constructor, which registers the endpoints.
+	 *
+	 * @return void
+	 */
 	public function __construct() {
 		$this->register( __CLASS__ );
 	}
 
+	/**
+	 * Register the products route.
+	 *
+	 * @return array Products route registration array.
+	 */
 	public static function register_route_products() {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/products',
-			'args'      => [ 'callback' => [ __CLASS__, 'get_products' ] ],
+			'args'      => [ 'callback' => [ __CLASS__, 'all' ] ],
 		];
 	}
 
-	public static function get_products() {
-		return self::StripeClient()->products->all( [ 'limit' => 3 ] );
+	/**
+	 * Retrieve all products, based on specific parameters.
+	 *
+	 * @todo Implement parameters.
+	 *
+	 * @return array JSON ready array.
+	 */
+	public static function all() {
+		return self::StripeClient()->products->all();
 	}
 }
 
