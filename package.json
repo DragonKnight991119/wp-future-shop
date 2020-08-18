@@ -2,6 +2,10 @@
     "name": "future-shop",
     "version": "0.0.1",
     "description": "",
+    "engines": {
+        "node": ">=10.0.0",
+        "npm": ">=6.9.0"
+    },
     "scripts": {
         "postinstall": "composer install",
         "start": "npm run env:start",
@@ -12,7 +16,8 @@
         "env:destroy": "wp-env destroy",
         "env:logs": "wp-env logs",
         "env:start": "wp-env start",
-        "env:stop": "wp-env stop"
+        "env:stop": "wp-env stop",
+        "dev": "webpack"
     },
     "repository": {
         "type": "git",
@@ -34,6 +39,12 @@
     "homepage": "https://github.com/juko-labs/future-shop#readme",
     "dependencies": {},
     "devDependencies": {
-        "@wordpress/env": "^1.5.0"
+        "@babel/core": "^7.11.1",
+        "@babel/preset-env": "^7.11.0",
+        "@babel/preset-react": "^7.10.4",
+        "@wordpress/env": "^1.6.0",
+        "babel-loader": "^8.1.0",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12"
     }
 }

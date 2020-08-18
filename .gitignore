@@ -2,3 +2,5 @@
 .wp-env.override.json
 node_modules
 vendor
+app/build.js
+app/dev.js
