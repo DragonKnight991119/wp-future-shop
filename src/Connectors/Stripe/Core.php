@@ -9,6 +9,7 @@
 
 namespace FutureShop\Connectors\Stripe;
 
+use FutureShop\Config\Stripe;
 use FutureShop\Connectors\Connector;
 
 /**
@@ -22,8 +23,7 @@ class Core extends Connector {
 	 * @return object The connected Stripe client object or error.
 	 */
 	public static function StripeClient() {
-		// @todo Constant needs to be defined.
-		return new \Stripe\StripeClient( 'S4B_STRIPE_API_KEY' );
+		return new \Stripe\StripeClient( Stripe::secret_key() );
 	}
 }
 
