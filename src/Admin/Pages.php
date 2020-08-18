@@ -7,6 +7,7 @@
 
 namespace FutureShop\Admin;
 
+use FutureShop\Plugin;
 use FutureShop\WP\Hooks;
 use FutureShop\Config\Data;
 
@@ -103,6 +104,26 @@ class Pages implements Admin {
 				[ __CLASS__, 'app' ]
 			);
 		}
+	}
+
+	/**
+	 * Application Scripts
+	 *
+	 * @return void
+	 *
+	 * @wp.hook action admin_enqueue_scripts
+	 */
+	public static function enqueue_scripts() {
+		$file    = SCRIPT_DEBUG ? 'dev' : 'build';
+		$version = SCRIPT_DEBUG ? time() : Plugin::version();
+
+		wp_enqueue_script(
+			'future-shop',
+			Plugin::url() . "app/$file.js",
+			[ 'wp-element' ],
+			$version,
+			true
+		);
 	}
 
 	/**
