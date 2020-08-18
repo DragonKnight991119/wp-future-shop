@@ -6,6 +6,7 @@
         "postinstall": "composer install",
         "start": "npm run env:start",
         "stop": "npm run env:stop",
+        "restart": "npm run stop && npm run start",
         "cli:wp": "wp-env run cli wp",
         "env:clean": "wp-env clean",
         "env:destroy": "wp-env destroy",
