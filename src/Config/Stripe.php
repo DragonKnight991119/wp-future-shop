@@ -53,13 +53,13 @@ class Stripe {
 	 *
 	 * @return mixed Public key as a string, otherwise false.
 	 */
-	public function public_key() {
+	public static function public_key() {
 		$key = false;
 
 		if ( defined( 'FUTURE_SHOP_STRIPE_PUBLIC_KEY' ) ) {
 			$key = FUTURE_SHOP_STRIPE_PUBLIC_KEY;
 		} else {
-			$options = $this->get_options();
+			$options = self::get_options();
 
 			$key = $options['public_key'] ?: false;
 		}
@@ -72,13 +72,13 @@ class Stripe {
 	 *
 	 * @return mixed Secret key as a string, otherwise false.
 	 */
-	public function secret_key() {
+	public static function secret_key() {
 		$key = false;
 
 		if ( defined( 'FUTURE_SHOP_STRIPE_SECRET_KEY' ) ) {
 			$key = FUTURE_SHOP_STRIPE_SECRET_KEY;
 		} else {
-			$options = $this->get_options();
+			$options = self::get_options();
 
 			$key = $options['secret_key'] ?: false;
 		}
