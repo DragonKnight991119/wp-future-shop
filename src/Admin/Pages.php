@@ -114,6 +114,10 @@ class Pages implements Admin {
 	 * @wp.hook action admin_enqueue_scripts
 	 */
 	public static function enqueue_scripts() {
+		if ( ! strstr( get_current_screen()->id, self::SLUG ) ) {
+			return;
+		}
+
 		$file    = SCRIPT_DEBUG ? 'dev' : 'build';
 		$version = SCRIPT_DEBUG ? time() : Plugin::version();
 
