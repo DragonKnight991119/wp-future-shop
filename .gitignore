@@ -1,6 +1,10 @@
-# Development Stuff
+# Local Development
 .wp-env.override.json
+
+# JavaScript (Node.js & NPM)
 node_modules
+js/build.js
+js/dev.js
+
+# PHP (Composer)
 vendor
-app/build.js
-app/dev.js
