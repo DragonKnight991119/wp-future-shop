@@ -14,7 +14,7 @@ Within your WordPress admin page for installing plugins, search for Future Shop 
 
 To install this plugin using Composer, first be sure to install the `composer/installers` package in order to put install the plugin in the WordPress plugins directory.
 
-	require composer/installers juko-labs/future-shop
+	require composer/installers future-shop/wp-future-shop
 
 ---
 

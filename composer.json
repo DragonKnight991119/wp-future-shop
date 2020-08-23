@@ -1,5 +1,5 @@
 {
-    "name": "juko-labs/future-shop",
+    "name": "future-shop/future-shop",
     "description": "Future shop is a WordPress plugin built for running an online store using Stripe.",
     "type": "wordpress-plugin",
     "license": "MPL-2.0",
