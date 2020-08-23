@@ -1,10 +1,10 @@
 const path = require( 'path' );
 
 module.exports = {
-	entry: './app/entry.js',
+	entry: './js/entry.js',
 	output: {
-		path: path.resolve( __dirname, 'app' ),
-		filename: 'dev.js'
+		path: path.resolve( __dirname, 'js' ),
+		filename: 'dev.js' // @todo Ensure this outputs the file name based on the mode.
 	},
 	module: {
 		rules: [
