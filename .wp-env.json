@@ -1,7 +1,6 @@
 {
-    "core": "WordPress/WordPress#5.5",
+    "core": "WordPress/WordPress#5.6",
     "plugins": ["."],
-    "port": 8280,
     "config": {
         "WP_DEBUG": true,
         "SAVEQUERIES": true,
