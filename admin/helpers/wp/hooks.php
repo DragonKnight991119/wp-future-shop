@@ -5,7 +5,7 @@
  * @package FutureShop
  */
 
-namespace FutureShop\WP;
+namespace FutureShop\Helpers\WP;
 
 /**
  * WP\Hooks class

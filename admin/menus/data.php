@@ -5,7 +5,7 @@
  * @package FutureShop
  */
 
-namespace FutureShop\Config;
+namespace FutureShop\Menus;
 
 /**
  * Static data class.

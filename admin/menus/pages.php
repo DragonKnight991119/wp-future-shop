@@ -5,16 +5,15 @@
  * @package FutureShop
  */
 
-namespace FutureShop\Admin;
+namespace FutureShop\Menus;
 
 use FutureShop\Plugin;
-use FutureShop\WP\Hooks;
-use FutureShop\Config\Data;
+use FutureShop\Helpers\WP\Hooks;
 
 /**
  * Admin Menus
  */
-class Pages implements Admin {
+class Pages {
 
 	/**
 	 * Main menu position.
@@ -123,7 +122,7 @@ class Pages implements Admin {
 
 		wp_enqueue_script(
 			'future-shop',
-			Plugin::url() . "app/$file.js",
+			Plugin::url() . "dist/$file.js",
 			[ 'wp-element' ],
 			$version,
 			true

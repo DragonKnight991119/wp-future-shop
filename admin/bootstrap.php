@@ -7,7 +7,7 @@
 
 namespace FutureShop;
 
-use FutureShop\WP\Hooks;
+use FutureShop\Helpers\WP\Hooks;
 
 /**
  * Bootstrap class, primarily used for kicking things off and cleanup.
@@ -43,7 +43,7 @@ class Bootstrap {
 	 * @wp.hook action plugins_loaded
 	 */
 	public static function admin() {
-		new Admin\Pages( __CLASS__ );
+		new Menus\Pages( __CLASS__ );
 	}
 
 	/**
@@ -51,7 +51,7 @@ class Bootstrap {
 	 *
 	 * @wp.hook action rest_api_init
 	 */
-	public static function connectors() {
-		new Connectors\Stripe\Products( __CLASS__ );
+	public static function apis() {
+		new APIS\Stripe\Products( __CLASS__ );
 	}
 }

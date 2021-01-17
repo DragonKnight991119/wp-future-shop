@@ -1,9 +1,9 @@
 const path = require( 'path' );
 
 module.exports = {
-	entry: './js/entry.js',
+	entry: './admin/app/entry.js',
 	output: {
-		path: path.resolve( __dirname, 'js' ),
+		path: path.resolve( __dirname, 'dist' ),
 		filename: 'dev.js' // @todo Ensure this outputs the file name based on the mode.
 	},
 	module: {

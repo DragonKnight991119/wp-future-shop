@@ -7,7 +7,7 @@
  * @package FutureShop
  */
 
-namespace FutureShop\Config;
+namespace FutureShop\Setup;
 
 /**
  * Compatability Class
@@ -21,7 +21,7 @@ class Compatability {
 	 *
 	 * @return boolean True if version is met, otherwise false.
 	 */
-	public static function wp_version( $required = '5.4' ) {
+	public static function wp_version( $required = '5.6' ) {
 		return version_compare( $required, $GLOBALS['wp_version'], '>=' );
 	}
 

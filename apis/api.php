@@ -1,21 +1,19 @@
 <?php
 /**
- * Stripe Connector
- *
- * @todo Class needs documentation and refining.
+ * Abstract API class used for creating proxy APIs for external services.
  *
  * @package FutureShop
  */
 
-namespace FutureShop\Connectors;
+namespace FutureShop\APIs;
 
 /**
- * Abstract class to extend when registering Connectors.
+ * Abstract class to extend when registering API connections.
  */
-abstract class Connector {
+abstract class API {
 
 	/**
-	 * Registers a Connector's routes.
+	 * Registers an API's routes.
 	 *
 	 * @todo Consider renaming method to register_methods.
 	 *
