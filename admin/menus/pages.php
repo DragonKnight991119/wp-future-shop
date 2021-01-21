@@ -8,6 +8,7 @@
 namespace FutureShop\Menus;
 
 use FutureShop\Plugin;
+use FutureShop\Config\Stripe;
 use FutureShop\Helpers\WP\Hooks;
 
 /**
@@ -41,6 +42,7 @@ class Pages {
 	 */
 	public function __construct() {
 		Hooks::load( __CLASS__ );
+		Stripe::load();
 	}
 
 	/**
@@ -136,5 +138,27 @@ class Pages {
 	 */
 	public static function app() {
 		echo \wp_kses( '<div id="future-shop">FutureShop</div>', [ 'div' => [ 'id' => [] ] ] );
+		?>
+		<div class="wrap">
+		<form method="post" action="options.php">
+			<?php \settings_fields( Stripe::OPTION_NAME . '_group' ); ?>
+			<?php \do_settings_sections( Stripe::OPTION_NAME . '_group' ); ?>
+
+			<table class="form-table">
+				<tr valign="top">
+				<th scope="row">Stripe Public Key</th>
+				<td><input type="text" name="stripe_public_key" value="<?php echo esc_attr( get_option('stripe_public_key') ); ?>" /></td>
+				</tr>
+				<tr valign="top">
+				<th scope="row">Stripe Secret Key</th>
+				<td><input type="text" name="stripe_secret_key" value="<?php echo esc_attr( get_option('stripe_secret_key') ); ?>" /></td>
+				</tr>
+			</table>
+			
+			<?php submit_button(); ?>
+
+		</form>
+		</div>
+		<?php
 	}
 }
