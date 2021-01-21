@@ -8,6 +8,7 @@
 namespace FutureShop;
 
 use FutureShop\Helpers\WP\Hooks;
+use FutureShop\APIs\Stripe\Products;
 
 /**
  * Bootstrap class, primarily used for kicking things off and cleanup.
@@ -52,6 +53,6 @@ class Bootstrap {
 	 * @wp.hook action rest_api_init
 	 */
 	public static function apis() {
-		new APIS\Stripe\Products( __CLASS__ );
+		new APIs\Stripe\Products( __CLASS__ );
 	}
 }

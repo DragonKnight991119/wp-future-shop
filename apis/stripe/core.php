@@ -7,15 +7,15 @@
  * @package FutureShop
  */
 
-namespace FutureShop\Connectors\Stripe;
+namespace FutureShop\APIs\Stripe;
 
+use FutureShop\APIs\API;
 use FutureShop\Config\Stripe;
-use FutureShop\Connectors\Connector;
 
 /**
  * Core class for Stripe connector.
  */
-class Core extends Connector {
+class Core extends API {
 
 	/**
 	 * Sets up the Stripe client connection.

@@ -27,7 +27,7 @@ abstract class API {
 			if ( substr( $route, 0, 14 ) === 'register_route' ) {
 				$register = call_user_func( [ $class, $route ] );
 
-				return register_rest_route(
+				register_rest_route(
 					$register['namespace'],
 					$register['route'],
 					$register['args'],

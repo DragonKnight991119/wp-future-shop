@@ -81,7 +81,7 @@ class Stripe {
 		} else {
 			$options = self::get_options();
 
-			$key = $options['public_key'] ?: false;
+			$key = $options['stripe_public_key'] ?: false;
 		}
 
 		return $key;
@@ -100,7 +100,7 @@ class Stripe {
 		} else {
 			$options = self::get_options();
 
-			$key = $options['secret_key'] ?: false;
+			$key = $options['stripe_secret_key'] ?: false;
 		}
 
 		return $key;
