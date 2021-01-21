@@ -147,11 +147,11 @@ class Pages {
 			<table class="form-table">
 				<tr valign="top">
 				<th scope="row">Stripe Public Key</th>
-				<td><input type="text" name="stripe_public_key" value="<?php echo esc_attr( get_option('stripe_public_key') ); ?>" /></td>
+				<td><input type="text" name="public_key" value="<?php echo esc_attr( get_option('public_key') ); ?>" /></td>
 				</tr>
 				<tr valign="top">
 				<th scope="row">Stripe Secret Key</th>
-				<td><input type="text" name="stripe_secret_key" value="<?php echo esc_attr( get_option('stripe_secret_key') ); ?>" /></td>
+				<td><input type="text" name="secret_key" value="<?php echo esc_attr( get_option('secret_key') ); ?>" /></td>
 				</tr>
 			</table>
 			
