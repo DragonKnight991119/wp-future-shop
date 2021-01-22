@@ -1,6 +1,6 @@
 <?php
 /**
- * Stripe Products API
+ * Stripe Products
  *
  * @todo Class needs documentation and refining.
  *

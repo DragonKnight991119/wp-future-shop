@@ -1,6 +1,6 @@
 <?php
 /**
- * Stripe Connector
+ * Stripe Connection
  *
  * @todo Class needs documentation and refining.
  *
@@ -13,7 +13,7 @@ use FutureShop\APIs\API;
 use FutureShop\Config\Stripe;
 
 /**
- * Core class for Stripe connector.
+ * Core class for Stripe connection.
  */
 class Core extends API {
 
