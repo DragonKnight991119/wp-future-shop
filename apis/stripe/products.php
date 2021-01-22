@@ -1,13 +1,13 @@
 <?php
 /**
- * Stripe Products Connector
+ * Stripe Products
  *
  * @todo Class needs documentation and refining.
  *
  * @package FutureShop
  */
 
-namespace FutureShop\Connectors\Stripe;
+namespace FutureShop\APIs\Stripe;
 
 /**
  * Products class.

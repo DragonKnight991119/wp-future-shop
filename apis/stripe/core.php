@@ -1,21 +1,21 @@
 <?php
 /**
- * Stripe Connector
+ * Stripe Connection
  *
  * @todo Class needs documentation and refining.
  *
  * @package FutureShop
  */
 
-namespace FutureShop\Connectors\Stripe;
+namespace FutureShop\APIs\Stripe;
 
 use FutureShop\Config\Stripe;
-use FutureShop\Connectors\Connector;
+use FutureShop\APIs\API;
 
 /**
- * Core class for Stripe connector.
+ * Core class for Stripe connection.
  */
-class Core extends Connector {
+class Core extends API {
 
 	/**
 	 * Sets up the Stripe client connection.

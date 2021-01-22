@@ -47,7 +47,7 @@ class Bootstrap {
 	}
 
 	/**
-	 * Registers API Connectors.
+	 * Registers APIs.
 	 *
 	 * @wp.hook action rest_api_init
 	 */
