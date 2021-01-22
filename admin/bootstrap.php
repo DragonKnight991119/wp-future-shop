@@ -52,6 +52,6 @@ class Bootstrap {
 	 * @wp.hook action rest_api_init
 	 */
 	public static function apis() {
-		new APIS\Stripe\Products( __CLASS__ );
+		new APIs\Stripe\Products( __CLASS__ );
 	}
 }
