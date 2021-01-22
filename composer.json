@@ -14,8 +14,12 @@
         }
     ],
     "autoload": {
+        "files": [
+            "bootstrap.php"
+        ],
         "psr-4": {
-            "FutureShop\\": [ "admin", "apis" ]
+            "FutureShop\\": "admin",
+            "FutureShop\\APIs\\": "apis"
         }
     },
     "require": {
