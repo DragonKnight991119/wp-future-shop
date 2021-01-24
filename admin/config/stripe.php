@@ -74,8 +74,7 @@ class Stripe {
 	 */
 	public static function public_key() {
 		$key = false;
-		var_dump($key);
-		wp_die();
+
 		if ( defined( 'FUTURE_SHOP_STRIPE_PUBLIC_KEY' ) ) {
 			$key = FUTURE_SHOP_STRIPE_PUBLIC_KEY;
 		} else {
@@ -98,8 +97,6 @@ class Stripe {
 		if ( defined( 'FUTURE_SHOP_STRIPE_SECRET_KEY' ) ) {
 			$key = FUTURE_SHOP_STRIPE_SECRET_KEY;
 		} else {
-			var_dump(self::get_options());
-			wp_die();
 			$options = self::get_options();
 
 			$key = $options['secret_key'] ?: false;
