@@ -139,7 +139,6 @@ class Products extends Core {
 				'description' => $request->get_param( 'description' ),
 				'active'      => true,// force true on creation
 				'type'        => 'good',// force good on creation
-				'description' => $request->get_param( 'description' ),
 				'images'      => array(
 					$request->get_param( 'feature_image' ),
 				)
@@ -155,7 +154,18 @@ class Products extends Core {
 	 * @return array JSON ready array.
 	 */
 	public static function update( object $request ) {
-		return self::StripeClient()->products->retrieve( $request->get_param( 'id' )  );
+		// var_dump($request->get_params());
+		// wp_die();
+		return self::StripeClient()->products->update(
+			$request->get_param( 'id' ),
+			array(
+				'name'        => $request->get_param( 'name' ),
+				'description' => $request->get_param( 'description' ),
+				'images'      => array(
+					$request->get_param( 'feature_image' ),
+				)
+			)
+		);
 	}
 
 	/**
