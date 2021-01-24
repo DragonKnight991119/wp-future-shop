@@ -1,6 +1,6 @@
 <?php
 /**
- * Stripe Products
+ * Stripe Prices
  *
  * @todo Class needs documentation and refining.
  *
@@ -10,9 +10,9 @@
 namespace FutureShop\APIs\Stripe;
 
 /**
- * Products class.
+ * Prices class.
  */
-class Products extends Core {
+class Prices extends Core {
 
 	/**
 	 * Constructor, which registers the endpoints.
@@ -24,14 +24,14 @@ class Products extends Core {
 	}
 
 	/**
-	 * Register the products route.
+	 * Register the prices route.
 	 *
-	 * @return array Products route registration array.
+	 * @return array Prices route registration array.
 	 */
-	public static function register_route_products() {
+	public static function register_route_prices() {
 		return [
 			'namespace' => 'stripe/v7',
-			'route'     => '/products',
+			'route'     => '/prices',
 			'args'      => array(
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'all' ],
@@ -40,14 +40,14 @@ class Products extends Core {
 	}
 
 	/**
-	 * Register a single product route.
+	 * Register a single price route.
 	 *
-	 * @return array Single product route registration array.
+	 * @return array Single price route registration array.
 	 */
-	public static function register_route_product() {
+	public static function register_route_price() {
 		return [
 			'namespace' => 'stripe/v7',
-			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
+			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
 			'args'      => array(
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'single' ],
@@ -56,14 +56,14 @@ class Products extends Core {
 	}
 
 	/**
-	 * Creates a single product route.
+	 * Creates a single price route.
 	 *
-	 * @return array Single product route registration array.
+	 * @return array Single price route registration array.
 	 */
-	public static function register_route_create_product() {
+	public static function register_route_create_price() {
 		return [
 			'namespace' => 'stripe/v7',
-			'route'     => '/product',
+			'route'     => '/price',
 			'args'      => array(
 				'methods'  => 'POST',
 				'callback' => [ __CLASS__, 'create' ],
@@ -72,11 +72,11 @@ class Products extends Core {
 	}
 
 	/**
-	 * Updates a single product route.
+	 * Updates a single price route.
 	 *
-	 * @return array Single product route registration array.
+	 * @return array Single price route registration array.
 	 */
-	public static function register_route_update_product() {
+	public static function register_route_update_price() {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
@@ -88,14 +88,14 @@ class Products extends Core {
 	}
 
 	/**
-	 * Deletes a single product route.
+	 * Deletes a single price route.
 	 *
-	 * @return array Single product route registration array.
+	 * @return array Single price route registration array.
 	 */
-	public static function register_route_delete_product() {
+	public static function register_route_delete_price() {
 		return [
 			'namespace' => 'stripe/v7',
-			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
+			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
 			'args'      => array(
 				'methods'  => 'DELETE',
 				'callback' => [ __CLASS__, 'delete' ],
@@ -104,57 +104,55 @@ class Products extends Core {
 	}
 
 	/**
-	 * Retrieve all products, based on specific parameters.
+	 * Retrieve all prices, based on specific parameters.
 	 *
 	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */
 	public static function all() {
-		return self::StripeClient()->products->all();
+		return self::StripeClient()->prices->all();
 	}
 
 	/**
-	 * Retrieve a single product, based on the product ID.
+	 * Retrieve a single price, based on the price ID.
 	 *
 	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */
 	public static function single( object $request ) {
-		return self::StripeClient()->products->retrieve( $request->get_param( 'id' )  );
+		return self::StripeClient()->prices->retrieve( $request->get_param( 'id' )  );
 	}
 
 	/**
-	 * Create a single product, based on the product ID.
+	 * Create a single price, based on the price ID.
 	 *
 	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */
 	public static function create( object $request ) {
-		return self::StripeClient()->products->create(
+		return self::StripeClient()->prices->create(
 			array(
-				'name'        => $request->get_param( 'name' ),
-				'description' => $request->get_param( 'description' ),
-				'active'      => true,// force true on creation
-				'type'        => 'good',// force good on creation
-				'images'      => array(
-					$request->get_param( 'feature_image' ),
-				)
+				'unit_amount' => $request->get_param( 'unit_amount' ),
+				'currency'    => $request->get_param( 'currency' ),
+				'product'     => $request->get_param( 'product' ),
 			)
 		);
 	}
 
 	/**
-	 * Retrieve a single product, based on the product ID.
+	 * Retrieve a single price, based on the price ID.
 	 *
 	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */
 	public static function update( object $request ) {
-		return self::StripeClient()->products->update(
+		// var_dump($request->get_params());
+		// wp_die();
+		return self::StripeClient()->prices->update(
 			$request->get_param( 'id' ),
 			array(
 				'name'        => $request->get_param( 'name' ),
@@ -167,14 +165,14 @@ class Products extends Core {
 	}
 
 	/**
-	 * Delete a single product, based on the product ID.
+	 * Delete a single price, based on the price ID.
 	 *
 	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */
 	public static function delete( object $request ) {
-		return self::StripeClient()->products->delete( $request->get_param( 'id' )  );
+		return self::StripeClient()->prices->delete( $request->get_param( 'id' )  );
 	}
 }
 
