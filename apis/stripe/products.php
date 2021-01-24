@@ -32,7 +32,10 @@ class Products extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/products',
-			'args'      => [ 'callback' => [ __CLASS__, 'all' ] ],
+			'args'      => array(
+				'methods'  => 'GET',
+				'callback' => [ __CLASS__, 'all' ],
+			)
 		];
 	}
 
@@ -45,7 +48,58 @@ class Products extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => [ 'callback' => [ __CLASS__, 'single' ] ],
+			'args'      => array(
+				'methods'  => 'GET',
+				'callback' => [ __CLASS__, 'single' ],
+			)
+		];
+	}
+
+	/**
+	 * Creates a single product route.
+	 *
+	 * @return array Single product route registration array.
+	 */
+	public static function register_route_create_product() {
+		return [
+			'namespace' => 'stripe/v7',
+			'route'     => '/product',
+			'args'      => array(
+				'methods'  => 'POST',
+				'callback' => [ __CLASS__, 'create' ],
+			)
+		];
+	}
+
+	/**
+	 * Updates a single product route.
+	 *
+	 * @return array Single product route registration array.
+	 */
+	public static function register_route_update_product() {
+		return [
+			'namespace' => 'stripe/v7',
+			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
+			'args'      => array(
+				'methods'  => 'POST',
+				'callback' => [ __CLASS__, 'update' ],
+			)
+		];
+	}
+
+	/**
+	 * Deletes a single product route.
+	 *
+	 * @return array Single product route registration array.
+	 */
+	public static function register_route_delete_product() {
+		return [
+			'namespace' => 'stripe/v7',
+			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
+			'args'      => array(
+				'methods'  => 'DELETE',
+				'callback' => [ __CLASS__, 'delete' ],
+			)
 		];
 	}
 
@@ -69,6 +123,39 @@ class Products extends Core {
 	 */
 	public static function single( object $request ) {
 		return self::StripeClient()->products->retrieve( $request->get_param( 'id' )  );
+	}
+
+	/**
+	 * Create a single product, based on the product ID.
+	 *
+	 * @todo Implement parameters.
+	 *
+	 * @return array JSON ready array.
+	 */
+	public static function create( object $request ) {
+		return self::StripeClient()->products->retrieve( $request->get_param( 'id' )  );
+	}
+
+	/**
+	 * Retrieve a single product, based on the product ID.
+	 *
+	 * @todo Implement parameters.
+	 *
+	 * @return array JSON ready array.
+	 */
+	public static function update( object $request ) {
+		return self::StripeClient()->products->retrieve( $request->get_param( 'id' )  );
+	}
+
+	/**
+	 * Delete a single product, based on the product ID.
+	 *
+	 * @todo Implement parameters.
+	 *
+	 * @return array JSON ready array.
+	 */
+	public static function delete( object $request ) {
+		return self::StripeClient()->products->delete( $request->get_param( 'id' )  );
 	}
 }
 
