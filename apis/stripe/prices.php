@@ -35,7 +35,7 @@ class Prices extends Core {
 			'args'      => array(
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'all' ],
-			)
+			),
 		];
 	}
 
@@ -51,7 +51,7 @@ class Prices extends Core {
 			'args'      => array(
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'single' ],
-			)
+			),
 		];
 	}
 
@@ -67,7 +67,7 @@ class Prices extends Core {
 			'args'      => array(
 				'methods'  => 'POST',
 				'callback' => [ __CLASS__, 'create' ],
-			)
+			),
 		];
 	}
 
@@ -79,11 +79,11 @@ class Prices extends Core {
 	public static function register_route_update_price() {
 		return [
 			'namespace' => 'stripe/v7',
-			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
+			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
 			'args'      => array(
 				'methods'  => 'POST',
 				'callback' => [ __CLASS__, 'update' ],
-			)
+			),
 		];
 	}
 
@@ -99,7 +99,7 @@ class Prices extends Core {
 			'args'      => array(
 				'methods'  => 'DELETE',
 				'callback' => [ __CLASS__, 'delete' ],
-			)
+			),
 		];
 	}
 
@@ -122,7 +122,7 @@ class Prices extends Core {
 	 * @return array JSON ready array.
 	 */
 	public static function single( object $request ) {
-		return self::StripeClient()->prices->retrieve( $request->get_param( 'id' )  );
+		return self::StripeClient()->prices->retrieve( $request->get_param( 'id' ) );
 	}
 
 	/**
@@ -133,34 +133,52 @@ class Prices extends Core {
 	 * @return array JSON ready array.
 	 */
 	public static function create( object $request ) {
+
+		$params = $request->get_params();
+
+		if ( !empty( $params['id'] ) ) {
+			unset( $params['id'] );
+		}
+		
 		return self::StripeClient()->prices->create(
 			array(
-				'unit_amount' => $request->get_param( 'unit_amount' ),
-				'currency'    => $request->get_param( 'currency' ),
-				'product'     => $request->get_param( 'product' ),
+				'unit_amount' => $params['unit_amount'],
+				'currency'    => $params['currency'],
+				'product'     => $params['product'],
 			)
 		);
 	}
 
 	/**
 	 * Retrieve a single price, based on the price ID.
+	 * Updates the specified price by setting the values of the parameters passed. Any parameters not provided are left unchanged.
+	 * 
+	 * Note: After prices are created, you can only update their metadata, nickname, and active fields. So we'll update the original price to inactive and create a new one.
 	 *
 	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */
 	public static function update( object $request ) {
-		// var_dump($request->get_params());
-		// wp_die();
-		return self::StripeClient()->prices->update(
+
+		$params = $request->get_params();
+
+		self::StripeClient()->prices->update( 
 			$request->get_param( 'id' ),
-			array(
-				'name'        => $request->get_param( 'name' ),
-				'description' => $request->get_param( 'description' ),
-				'images'      => array(
-					$request->get_param( 'feature_image' ),
+			array( 
+				array (
+					'active' => false
 				)
 			)
+		);
+
+		// Unset the price ID so it isn't used in the next call to create a new price.
+		if ( !empty( $params['id'] ) ) {
+			unset( $params['id'] );
+		}
+		
+		return self::StripeClient()->prices->create(
+			$params
 		);
 	}
 
