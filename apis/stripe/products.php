@@ -133,7 +133,18 @@ class Products extends Core {
 	 * @return array JSON ready array.
 	 */
 	public static function create( object $request ) {
-		return self::StripeClient()->products->retrieve( $request->get_param( 'id' )  );
+		return self::StripeClient()->products->create(
+			array(
+				'name'        => $request->get_param( 'name' ),
+				'description' => $request->get_param( 'description' ),
+				'active'      => true,// force true on creation
+				'type'        => 'good',// force good on creation
+				'description' => $request->get_param( 'description' ),
+				'images'      => array(
+					$request->get_param( 'feature_image' ),
+				)
+			)
+		);
 	}
 
 	/**
