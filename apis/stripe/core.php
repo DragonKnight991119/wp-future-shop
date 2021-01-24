@@ -23,6 +23,8 @@ class Core extends API {
 	 * @return object The connected Stripe client object or error.
 	 */
 	public static function StripeClient() {
+		var_dump(Stripe::secret_key());
+		wp_die();
 		return new \Stripe\StripeClient( Stripe::secret_key() );
 	}
 }

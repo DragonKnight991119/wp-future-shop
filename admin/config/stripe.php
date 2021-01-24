@@ -34,8 +34,8 @@ class Stripe {
 	 * @return void.
 	 */
 	public static function register_settings() {
-		\register_setting( self::OPTION_NAME . '_group', 'public_key' );
-		\register_setting( self::OPTION_NAME . '_group', 'secret_key' );	
+		\register_setting( self::OPTION_NAME . '_group', self::OPTION_NAME );	
+		// \register_setting( self::OPTION_NAME . '_group', 'public_key' );
 	}
 
 	/**
@@ -44,7 +44,6 @@ class Stripe {
 	 * @return mixed Options array or false.
 	 */
 	public function get_options() {
-		return \get_option( self::OPTION_NAME ) ?: [];
 		return \get_option( self::OPTION_NAME ) ?: [];
 	}
 
@@ -75,7 +74,8 @@ class Stripe {
 	 */
 	public static function public_key() {
 		$key = false;
-
+		var_dump($key);
+		wp_die();
 		if ( defined( 'FUTURE_SHOP_STRIPE_PUBLIC_KEY' ) ) {
 			$key = FUTURE_SHOP_STRIPE_PUBLIC_KEY;
 		} else {
@@ -98,6 +98,8 @@ class Stripe {
 		if ( defined( 'FUTURE_SHOP_STRIPE_SECRET_KEY' ) ) {
 			$key = FUTURE_SHOP_STRIPE_SECRET_KEY;
 		} else {
+			var_dump(self::get_options());
+			wp_die();
 			$options = self::get_options();
 
 			$key = $options['secret_key'] ?: false;

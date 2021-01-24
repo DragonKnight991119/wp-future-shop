@@ -137,7 +137,13 @@ class Pages {
 	 * @return void
 	 */
 	public static function app() {
+
+		$stripe_settings = Stripe::get_options();
+		// var_dump($stripe_settings);
+		// wp_die();
+		
 		echo \wp_kses( '<div id="future-shop">FutureShop</div>', [ 'div' => [ 'id' => [] ] ] );
+
 		?>
 		<div class="wrap">
 		<form method="post" action="options.php">
@@ -147,11 +153,11 @@ class Pages {
 			<table class="form-table">
 				<tr valign="top">
 				<th scope="row">Stripe Public Key</th>
-				<td><input type="text" name="public_key" value="<?php echo esc_attr( get_option('public_key') ); ?>" /></td>
+				<td><input type="text" name="<?php echo esc_attr( Stripe::OPTION_NAME ) ?>[public_key]" value="<?php echo esc_attr( $stripe_settings['public_key'] ); ?>" /></td>
 				</tr>
 				<tr valign="top">
 				<th scope="row">Stripe Secret Key</th>
-				<td><input type="text" name="secret_key" value="<?php echo esc_attr( get_option('secret_key') ); ?>" /></td>
+				<td><input type="text" name="<?php echo esc_attr( Stripe::OPTION_NAME ) ?>[secret_key]" value="<?php echo esc_attr( $stripe_settings['secret_key'] ); ?>" /></td>
 				</tr>
 			</table>
 			
