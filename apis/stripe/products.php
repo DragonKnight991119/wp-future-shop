@@ -140,7 +140,7 @@ class Products extends Core {
 				'active'      => true,// force true on creation
 				'type'        => 'good',// force good on creation
 				'images'      => array(
-					$request->get_param( 'feature_image' ),
+					$request->get_param( 'featured_image' ),
 				)
 			)
 		);
@@ -160,7 +160,7 @@ class Products extends Core {
 				'name'        => $request->get_param( 'name' ),
 				'description' => $request->get_param( 'description' ),
 				'images'      => array(
-					$request->get_param( 'feature_image' ),
+					$request->get_param( 'featured_image' ),
 				)
 			)
 		);

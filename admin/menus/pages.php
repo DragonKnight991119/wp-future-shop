@@ -139,8 +139,7 @@ class Pages {
 	public static function app() {
 
 		$stripe_settings = Stripe::get_options();
-		// var_dump($stripe_settings);
-		// wp_die();
+		$pres_currencies = Stripe::get_presentment_currencies();
 		
 		echo \wp_kses( '<div id="future-shop">FutureShop</div>', [ 'div' => [ 'id' => [] ] ] );
 
@@ -158,6 +157,18 @@ class Pages {
 				<tr valign="top">
 				<th scope="row">Stripe Secret Key</th>
 				<td><input type="text" name="<?php echo esc_attr( Stripe::OPTION_NAME ) ?>[secret_key]" value="<?php echo esc_attr( $stripe_settings['secret_key'] ); ?>" /></td>
+				</tr>
+				<tr valign="top">
+				<th scope="row">Store Currency</th>
+				<td><select name="<?php echo esc_attr( Stripe::OPTION_NAME ) ?>[currency]"/>
+					<option>--Select a currency--</option>
+					<?php foreach ( $pres_currencies as $key => $value ) : ?>
+					<option 
+						value="<?php echo esc_attr ( $key );  ?>"
+						<?php echo ( $key === $stripe_settings['currency'] ) ? 'selected' : ''; ?>
+						><?php echo esc_html ( $value );  ?></option>
+					<?php endforeach; ?>
+				</select></td>
 				</tr>
 			</table>
 			

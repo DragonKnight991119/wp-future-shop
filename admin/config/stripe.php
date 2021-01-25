@@ -39,11 +39,48 @@ class Stripe {
 	}
 
 	/**
+	 * Return a list of Presentment Currencies and their codes.
+	 * https://stripe.com/docs/currencies
+	 *
+	 * @return array of currencies.
+	 */
+	public static function get_presentment_currencies() {
+		return array(
+			'usd' => 'US Dollar (USD)',
+			'cad' => 'Canadian Dollar (CAD)',
+			'gbp' => 'British Pound (GBP)',
+			'eur' => 'Euro (EUR)',
+			'krw' => 'Korean Won (KRW)',
+			'jpy' => 'Japanese Yen (JPY)',
+		);
+	}
+
+	/**
+	 * Return a list of Presentment Currencies and their codes.
+	 * https://stripe.com/docs/currencies
+	 *
+	 * @return array of currencies.
+	 */
+	public static function get_store_currency() {
+		$currency = '';
+
+		if ( defined( 'FUTURE_SHOP_STORE_CURRENCY' ) ) {
+			$currency = FUTURE_SHOP_STORE_CURRENCY;
+		} else {
+			$options = self::get_options();
+
+			$currency = $options['currency'] ?: '';
+		}
+
+		return $currency;
+	}
+
+	/**
 	 * Get the Future Shop options for Stripe.
 	 *
 	 * @return mixed Options array or false.
 	 */
-	public function get_options() {
+	public static function get_options() {
 		return \get_option( self::OPTION_NAME ) ?: [];
 	}
 

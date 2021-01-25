@@ -9,6 +9,8 @@
 
 namespace FutureShop\APIs\Stripe;
 
+use FutureShop\Config\Stripe as FSStripe;
+
 /**
  * Prices class.
  */
@@ -143,7 +145,7 @@ class Prices extends Core {
 		return self::StripeClient()->prices->create(
 			array(
 				'unit_amount' => $params['unit_amount'],
-				'currency'    => $params['currency'],
+				'currency'    => FSStripe::get_store_currency(),
 				'product'     => $params['product'],
 			)
 		);
@@ -176,10 +178,10 @@ class Prices extends Core {
 		if ( !empty( $params['id'] ) ) {
 			unset( $params['id'] );
 		}
+
+		$params['currency'] = FSStripe::get_store_currency();
 		
-		return self::StripeClient()->prices->create(
-			$params
-		);
+		return self::StripeClient()->prices->create( $params );
 	}
 
 	/**
