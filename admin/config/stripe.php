@@ -20,12 +20,12 @@ class Stripe {
 	const OPTION_NAME = 'future_shop_stripe_settings';
 
 	/**
-	 * Construct the allowed options.
+	 * Do anything during load, like construct the allowed options.
 	 *
 	 * @return void.
 	 */
 	public static function load() {
-		\add_action( 'admin_init', [ __CLASS__, 'register_settings' ] );
+		self::register_settings();
 	}
 
 	/**
@@ -35,7 +35,6 @@ class Stripe {
 	 */
 	public static function register_settings() {
 		\register_setting( self::OPTION_NAME . '_group', self::OPTION_NAME );	
-		// \register_setting( self::OPTION_NAME . '_group', 'public_key' );
 	}
 
 	/**
