@@ -12,7 +12,7 @@ namespace FutureShop\APIs\Stripe;
 /**
  * Products class.
  */
-class Products extends Core {
+class ProductID extends Core {
 
 	/**
 	 * Constructor, which registers the endpoints.
@@ -21,22 +21,6 @@ class Products extends Core {
 	 */
 	public function __construct() {
 		$this->register( __CLASS__ );
-	}
-
-	/**
-	 * Register the products route.
-	 *
-	 * @return array Products route registration array.
-	 */
-	public static function register_route_products() {
-		return [
-			'namespace' => 'stripe/v7',
-			'route'     => '/products',
-			'args'      => [
-				'methods'  => 'GET',
-				'callback' => [ __CLASS__, 'all' ],
-			]
-		];
 	}
 
 	/**
@@ -51,22 +35,6 @@ class Products extends Core {
 			'args'      => [
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'single' ],
-			]
-		];
-	}
-
-	/**
-	 * Creates a single product route.
-	 *
-	 * @return array Single product route registration array.
-	 */
-	public static function register_route_create_product() {
-		return [
-			'namespace' => 'stripe/v7',
-			'route'     => '/product',
-			'args'      => [
-				'methods'  => 'POST',
-				'callback' => [ __CLASS__, 'create' ],
 			]
 		];
 	}
@@ -104,17 +72,6 @@ class Products extends Core {
 	}
 
 	/**
-	 * Retrieve all products, based on specific parameters.
-	 *
-	 * @todo Implement parameters.
-	 *
-	 * @return array JSON ready array.
-	 */
-	public static function all() {
-		return self::StripeClient()->products->all();
-	}
-
-	/**
 	 * Retrieve a single product, based on the product ID.
 	 *
 	 * @todo Implement parameters.
@@ -123,27 +80,6 @@ class Products extends Core {
 	 */
 	public static function single( object $request ) {
 		return self::StripeClient()->products->retrieve( $request->get_param( 'id' )  );
-	}
-
-	/**
-	 * Create a single product, based on the product ID.
-	 *
-	 * @todo Implement parameters.
-	 *
-	 * @return array JSON ready array.
-	 */
-	public static function create( object $request ) {
-		return self::StripeClient()->products->create(
-			[
-				'name'        => $request->get_param( 'name' ),
-				'description' => $request->get_param( 'description' ),
-				'active'      => true,// force true on creation
-				'type'        => 'good',// force good on creation
-				'images'      => [
-					$request->get_param( 'featured_image' ),
-				]
-			]
-		);
 	}
 
 	/**

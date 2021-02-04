@@ -26,22 +26,6 @@ class Prices extends Core {
 	}
 
 	/**
-	 * Register the prices route.
-	 *
-	 * @return array Prices route registration array.
-	 */
-	public static function register_route_prices() {
-		return [
-			'namespace' => 'stripe/v7',
-			'route'     => '/prices',
-			'args'      => [
-				'methods'  => 'GET',
-				'callback' => [ __CLASS__, 'all' ],
-			],
-		];
-	}
-
-	/**
 	 * Register a single price route.
 	 *
 	 * @return array Single price route registration array.
@@ -53,22 +37,6 @@ class Prices extends Core {
 			'args'      => [
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'single' ],
-			],
-		];
-	}
-
-	/**
-	 * Creates a single price route.
-	 *
-	 * @return array Single price route registration array.
-	 */
-	public static function register_route_create_price() {
-		return [
-			'namespace' => 'stripe/v7',
-			'route'     => '/price',
-			'args'      => [
-				'methods'  => 'POST',
-				'callback' => [ __CLASS__, 'create' ],
 			],
 		];
 	}
@@ -106,17 +74,6 @@ class Prices extends Core {
 	}
 
 	/**
-	 * Retrieve all prices, based on specific parameters.
-	 *
-	 * @todo Implement parameters.
-	 *
-	 * @return array JSON ready array.
-	 */
-	public static function all() {
-		return self::StripeClient()->prices->all();
-	}
-
-	/**
 	 * Retrieve a single price, based on the price ID.
 	 *
 	 * @todo Implement parameters.
@@ -125,30 +82,6 @@ class Prices extends Core {
 	 */
 	public static function single( object $request ) {
 		return self::StripeClient()->prices->retrieve( $request->get_param( 'id' ) );
-	}
-
-	/**
-	 * Create a single price, based on the price ID.
-	 *
-	 * @todo Implement parameters.
-	 *
-	 * @return array JSON ready array.
-	 */
-	public static function create( object $request ) {
-
-		$params = $request->get_params();
-
-		if ( !empty( $params['id'] ) ) {
-			unset( $params['id'] );
-		}
-		
-		return self::StripeClient()->prices->create(
-			[
-				'unit_amount' => $params['unit_amount'],
-				'currency'    => FSStripe::get_store_currency(),
-				'product'     => $params['product'],
-			]
-		);
 	}
 
 	/**
