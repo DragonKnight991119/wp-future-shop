@@ -14,7 +14,7 @@ use FutureShop\Config\Stripe as FSStripe;
 /**
  * Prices class.
  */
-class Prices extends Core {
+class Price extends Core {
 
 	/**
 	 * Constructor, which registers the endpoints.

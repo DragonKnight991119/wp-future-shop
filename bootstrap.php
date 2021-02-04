@@ -47,12 +47,16 @@ class Bootstrap {
 	}
 
 	/**
-	 * Registers APIs.
+	 * Registers Proxy API route classes.
 	 *
 	 * @wp.hook action rest_api_init
 	 */
 	public static function apis() {
 		new APIs\Stripe\Products( __CLASS__ );
+		new APIs\Stripe\Product( __CLASS__ );
+		new APIs\Stripe\ProductID( __CLASS__ );
 		new APIs\Stripe\Prices( __CLASS__ );
+		new APIs\Stripe\Price( __CLASS__ );
+		new APIs\Stripe\PriceID( __CLASS__ );
 	}
 }
