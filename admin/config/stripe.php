@@ -25,7 +25,7 @@ class Stripe {
 	 * @return void.
 	 */
 	public static function load() {
-		\add_action( 'admin_init', array( __CLASS__, 'register_settings' ) );
+		\add_action( 'admin_init', [ __CLASS__, 'register_settings' ] );
 	}
 
 	/**
@@ -45,14 +45,14 @@ class Stripe {
 	 * @return array of currencies.
 	 */
 	public static function get_presentment_currencies() {
-		return array(
+		return [
 			'usd' => 'US Dollar (USD)',
 			'cad' => 'Canadian Dollar (CAD)',
 			'gbp' => 'British Pound (GBP)',
 			'eur' => 'Euro (EUR)',
 			'krw' => 'Korean Won (KRW)',
 			'jpy' => 'Japanese Yen (JPY)',
-		);
+		];
 	}
 
 	/**

@@ -34,10 +34,10 @@ class Prices extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/prices',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'all' ],
-			),
+			],
 		];
 	}
 
@@ -50,10 +50,10 @@ class Prices extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'single' ],
-			),
+			],
 		];
 	}
 
@@ -66,10 +66,10 @@ class Prices extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/price',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'POST',
 				'callback' => [ __CLASS__, 'create' ],
-			),
+			],
 		];
 	}
 
@@ -82,10 +82,10 @@ class Prices extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'POST',
 				'callback' => [ __CLASS__, 'update' ],
-			),
+			],
 		];
 	}
 
@@ -98,10 +98,10 @@ class Prices extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'DELETE',
 				'callback' => [ __CLASS__, 'delete' ],
-			),
+			],
 		];
 	}
 
@@ -143,11 +143,11 @@ class Prices extends Core {
 		}
 		
 		return self::StripeClient()->prices->create(
-			array(
+			[
 				'unit_amount' => $params['unit_amount'],
 				'currency'    => FSStripe::get_store_currency(),
 				'product'     => $params['product'],
-			)
+			]
 		);
 	}
 
@@ -167,11 +167,11 @@ class Prices extends Core {
 
 		self::StripeClient()->prices->update( 
 			$request->get_param( 'id' ),
-			array( 
+			[ 
 				array (
 					'active' => false
 				)
-			)
+			]
 		);
 
 		// Unset the price ID so it isn't used in the next call to create a new price.

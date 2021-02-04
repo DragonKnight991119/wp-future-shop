@@ -32,10 +32,10 @@ class Products extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/products',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'all' ],
-			)
+			]
 		];
 	}
 
@@ -48,10 +48,10 @@ class Products extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'single' ],
-			)
+			]
 		];
 	}
 
@@ -64,10 +64,10 @@ class Products extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/product',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'POST',
 				'callback' => [ __CLASS__, 'create' ],
-			)
+			]
 		];
 	}
 
@@ -80,10 +80,10 @@ class Products extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'POST',
 				'callback' => [ __CLASS__, 'update' ],
-			)
+			]
 		];
 	}
 
@@ -96,10 +96,10 @@ class Products extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => array(
+			'args'      => [
 				'methods'  => 'DELETE',
 				'callback' => [ __CLASS__, 'delete' ],
-			)
+			]
 		];
 	}
 
@@ -134,15 +134,15 @@ class Products extends Core {
 	 */
 	public static function create( object $request ) {
 		return self::StripeClient()->products->create(
-			array(
+			[
 				'name'        => $request->get_param( 'name' ),
 				'description' => $request->get_param( 'description' ),
 				'active'      => true,// force true on creation
 				'type'        => 'good',// force good on creation
-				'images'      => array(
+				'images'      => [
 					$request->get_param( 'featured_image' ),
-				)
-			)
+				]
+			]
 		);
 	}
 
@@ -156,13 +156,13 @@ class Products extends Core {
 	public static function update( object $request ) {
 		return self::StripeClient()->products->update(
 			$request->get_param( 'id' ),
-			array(
+			[
 				'name'        => $request->get_param( 'name' ),
 				'description' => $request->get_param( 'description' ),
-				'images'      => array(
+				'images'      => [
 					$request->get_param( 'featured_image' ),
-				)
-			)
+				]
+			]
 		);
 	}
 
