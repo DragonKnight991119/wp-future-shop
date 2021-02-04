@@ -27,6 +27,8 @@ class PriceID extends Core {
 
 	/**
 	 * Register a single price route.
+	 * Updates a single price route.
+	 * Deletes a single price route.
 	 *
 	 * @return array Single price route registration array.
 	 */
@@ -35,48 +37,24 @@ class PriceID extends Core {
 			'namespace' => 'stripe/v7',
 			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
 			'args'      => [
-				'methods'  => 'GET',
-				'callback' => [ __CLASS__, 'single' ],
-			],
-		];
-	}
-
-	/**
-	 * Updates a single price route.
-	 *
-	 * @return array Single price route registration array.
-	 */
-	public static function register_route_update_price() {
-		return [
-			'namespace' => 'stripe/v7',
-			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => [
-				'methods'  => 'POST',
-				'callback' => [ __CLASS__, 'update' ],
-			],
-		];
-	}
-
-	/**
-	 * Deletes a single price route.
-	 *
-	 * @return array Single price route registration array.
-	 */
-	public static function register_route_delete_price() {
-		return [
-			'namespace' => 'stripe/v7',
-			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => [
-				'methods'  => 'DELETE',
-				'callback' => [ __CLASS__, 'delete' ],
+				[
+					'methods'  => 'GET',
+					'callback' => [ __CLASS__, 'single' ],
+				],
+				[
+					'methods'  => 'POST',
+					'callback' => [ __CLASS__, 'update' ],
+				],
+				[
+					'methods'  => 'DELETE',
+					'callback' => [ __CLASS__, 'delete' ],
+				],
 			],
 		];
 	}
 
 	/**
 	 * Retrieve a single price, based on the price ID.
-	 *
-	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */
@@ -89,8 +67,6 @@ class PriceID extends Core {
 	 * Updates the specified price by setting the values of the parameters passed. Any parameters not provided are left unchanged.
 	 * 
 	 * Note: After prices are created, you can only update their metadata, nickname, and active fields. So we'll update the original price to inactive and create a new one.
-	 *
-	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */

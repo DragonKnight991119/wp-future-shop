@@ -25,6 +25,8 @@ class ProductID extends Core {
 
 	/**
 	 * Register a single product route.
+	 * Updates a single product route.
+	 * Deletes a single product route.
 	 *
 	 * @return array Single product route registration array.
 	 */
@@ -33,48 +35,24 @@ class ProductID extends Core {
 			'namespace' => 'stripe/v7',
 			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
 			'args'      => [
-				'methods'  => 'GET',
-				'callback' => [ __CLASS__, 'single' ],
-			]
-		];
-	}
-
-	/**
-	 * Updates a single product route.
-	 *
-	 * @return array Single product route registration array.
-	 */
-	public static function register_route_update_product() {
-		return [
-			'namespace' => 'stripe/v7',
-			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => [
-				'methods'  => 'POST',
-				'callback' => [ __CLASS__, 'update' ],
-			]
-		];
-	}
-
-	/**
-	 * Deletes a single product route.
-	 *
-	 * @return array Single product route registration array.
-	 */
-	public static function register_route_delete_product() {
-		return [
-			'namespace' => 'stripe/v7',
-			'route'     => '/product/(?P<id>[\a-zA-Z0-9_]+)',
-			'args'      => [
-				'methods'  => 'DELETE',
-				'callback' => [ __CLASS__, 'delete' ],
+				[
+					'methods'  => 'GET',
+					'callback' => [ __CLASS__, 'single' ],
+				],
+				[
+					'methods'  => 'POST',
+					'callback' => [ __CLASS__, 'update' ],
+				],
+				[
+					'methods'  => 'DELETE',
+					'callback' => [ __CLASS__, 'delete' ],
+				]
 			]
 		];
 	}
 
 	/**
 	 * Retrieve a single product, based on the product ID.
-	 *
-	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */
@@ -84,8 +62,6 @@ class ProductID extends Core {
 
 	/**
 	 * Retrieve a single product, based on the product ID.
-	 *
-	 * @todo Implement parameters.
 	 *
 	 * @return array JSON ready array.
 	 */
