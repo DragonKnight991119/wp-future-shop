@@ -52,11 +52,11 @@ class Bootstrap {
 	 * @wp.hook action rest_api_init
 	 */
 	public static function apis() {
-		new APIs\Stripe\Products( __CLASS__ );
-		new APIs\Stripe\Product( __CLASS__ );
-		new APIs\Stripe\ProductID( __CLASS__ );
-		new APIs\Stripe\Prices( __CLASS__ );
-		new APIs\Stripe\Price( __CLASS__ );
-		new APIs\Stripe\PriceID( __CLASS__ );
+		new APIs\Stripe\Products\Products( __CLASS__ );
+		new APIs\Stripe\Products\Product( __CLASS__ );
+		new APIs\Stripe\Products\ProductID( __CLASS__ );
+		new APIs\Stripe\Prices\Prices( __CLASS__ );
+		new APIs\Stripe\Prices\Price( __CLASS__ );
+		new APIs\Stripe\Prices\PriceID( __CLASS__ );
 	}
 }

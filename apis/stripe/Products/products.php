@@ -7,7 +7,9 @@
  * @package FutureShop
  */
 
-namespace FutureShop\APIs\Stripe;
+namespace FutureShop\APIs\Stripe\Products;
+
+use FutureShop\APIs\Stripe\Core;
 
 /**
  * Products class.

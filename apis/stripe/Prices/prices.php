@@ -7,9 +7,9 @@
  * @package FutureShop
  */
 
-namespace FutureShop\APIs\Stripe;
+namespace FutureShop\APIs\Stripe\Prices;
 
-use FutureShop\Config\Stripe as FSStripe;
+use FutureShop\APIs\Stripe\Core;
 
 /**
  * Prices class.

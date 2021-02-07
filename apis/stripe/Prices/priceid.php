@@ -9,6 +9,9 @@
 
 namespace FutureShop\APIs\Stripe;
 
+namespace FutureShop\APIs\Stripe\Prices;
+
+use FutureShop\APIs\Stripe\Core;
 use FutureShop\Config\Stripe as FSStripe;
 
 /**
