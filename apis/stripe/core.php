@@ -9,8 +9,8 @@
 
 namespace FutureShop\APIs\Stripe;
 
-use FutureShop\Config\Stripe;
 use FutureShop\APIs\API;
+use FutureShop\Config\Stripe;
 
 /**
  * Core class for Stripe connection.

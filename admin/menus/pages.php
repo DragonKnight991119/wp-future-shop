@@ -8,6 +8,7 @@
 namespace FutureShop\Menus;
 
 use FutureShop\Plugin;
+use FutureShop\Config\Stripe;
 use FutureShop\Helpers\WP\Hooks;
 
 /**
@@ -41,6 +42,7 @@ class Pages {
 	 */
 	public function __construct() {
 		Hooks::load( __CLASS__ );
+		Stripe::load();
 	}
 
 	/**
@@ -135,6 +137,45 @@ class Pages {
 	 * @return void
 	 */
 	public static function app() {
+
+		$stripe_settings = Stripe::get_options();
+		$pres_currencies = Stripe::get_presentment_currencies();
+		
 		echo \wp_kses( '<div id="future-shop">FutureShop</div>', [ 'div' => [ 'id' => [] ] ] );
+
+		?>
+		<div class="wrap">
+		<form method="post" action="options.php">
+			<?php \settings_fields( Stripe::OPTION_NAME . '_group' ); ?>
+			<?php \do_settings_sections( Stripe::OPTION_NAME . '_group' ); ?>
+
+			<table class="form-table">
+				<tr valign="top">
+				<th scope="row">Stripe Public Key</th>
+				<td><input type="text" name="<?php echo esc_attr( Stripe::OPTION_NAME ) ?>[public_key]" value="<?php echo esc_attr( $stripe_settings['public_key'] ); ?>" /></td>
+				</tr>
+				<tr valign="top">
+				<th scope="row">Stripe Secret Key</th>
+				<td><input type="text" name="<?php echo esc_attr( Stripe::OPTION_NAME ) ?>[secret_key]" value="<?php echo esc_attr( $stripe_settings['secret_key'] ); ?>" /></td>
+				</tr>
+				<tr valign="top">
+				<th scope="row">Store Currency</th>
+				<td><select name="<?php echo esc_attr( Stripe::OPTION_NAME ) ?>[currency]"/>
+					<option>--Select a currency--</option>
+					<?php foreach ( $pres_currencies as $key => $value ) : ?>
+					<option 
+						value="<?php echo esc_attr ( $key );  ?>"
+						<?php echo ( $key === $stripe_settings['currency'] ) ? 'selected' : ''; ?>
+						><?php echo esc_html ( $value );  ?></option>
+					<?php endforeach; ?>
+				</select></td>
+				</tr>
+			</table>
+			
+			<?php submit_button(); ?>
+
+		</form>
+		</div>
+		<?php
 	}
 }

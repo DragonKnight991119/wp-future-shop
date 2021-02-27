@@ -7,7 +7,9 @@
  * @package FutureShop
  */
 
-namespace FutureShop\APIs\Stripe;
+namespace FutureShop\APIs\Stripe\Products;
+
+use FutureShop\APIs\Stripe\Core;
 
 /**
  * Products class.
@@ -32,7 +34,10 @@ class Products extends Core {
 		return [
 			'namespace' => 'stripe/v7',
 			'route'     => '/products',
-			'args'      => [ 'callback' => [ __CLASS__, 'all' ] ],
+			'args'      => [
+				'methods'  => 'GET',
+				'callback' => [ __CLASS__, 'all' ],
+			]
 		];
 	}
 
@@ -47,4 +52,3 @@ class Products extends Core {
 		return self::StripeClient()->products->all();
 	}
 }
-

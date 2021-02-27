@@ -17,15 +17,70 @@ class Stripe {
 	 *
 	 * @var string
 	 */
-	private $option_name = 'future_shop_stripe_settings';
+	const OPTION_NAME = 'future_shop_stripe_settings';
+
+	/**
+	 * Do anything during load, like construct the allowed options.
+	 *
+	 * @return void.
+	 */
+	public static function load() {
+		self::register_settings();
+	}
+
+	/**
+	 * Register the allowed options.
+	 *
+	 * @return void.
+	 */
+	public static function register_settings() {
+		\register_setting( self::OPTION_NAME . '_group', self::OPTION_NAME );	
+	}
+
+	/**
+	 * Return a list of Presentment Currencies and their codes.
+	 * https://stripe.com/docs/currencies
+	 *
+	 * @return array of currencies.
+	 */
+	public static function get_presentment_currencies() {
+		return [
+			'usd' => 'US Dollar (USD)',
+			'cad' => 'Canadian Dollar (CAD)',
+			'gbp' => 'British Pound (GBP)',
+			'eur' => 'Euro (EUR)',
+			'krw' => 'Korean Won (KRW)',
+			'jpy' => 'Japanese Yen (JPY)',
+		];
+	}
+
+	/**
+	 * Return a list of Presentment Currencies and their codes.
+	 * https://stripe.com/docs/currencies
+	 *
+	 * @return array of currencies.
+	 */
+	public static function get_store_currency() {
+		$currency = '';
+
+		if ( defined( 'FUTURE_SHOP_STORE_CURRENCY' ) ) {
+			$currency = FUTURE_SHOP_STORE_CURRENCY;
+		} else {
+			$options = self::get_options();
+
+			$currency = $options['currency'] ?: '';
+		}
+
+		return $currency;
+	}
 
 	/**
 	 * Get the Future Shop options for Stripe.
 	 *
 	 * @return mixed Options array or false.
 	 */
-	private function get_options() {
-		return \get_option( $this->option_name ) ?: [];
+	public static function get_options() {
+		return \get_option( self::OPTION_NAME ) ?: [];
 	}
 
 	/**
@@ -36,7 +91,7 @@ class Stripe {
 	 * @return boolean True if options updated, otherwise false.
 	 */
 	private function set_options( $new_options = [] ) {
-		return \update_option( $this->option_name, array_merge( $this->get_options(), $new_options ), false );
+		return \update_option( self::OPTION_NAME, array_merge( $this->get_options(), $new_options ), false );
 	}
 
 	/**
