@@ -9,6 +9,7 @@ namespace FutureShop\Menus;
 
 use FutureShop\Plugin;
 use FutureShop\Config\Stripe;
+use FutureShop\Helpers\Assets\Enqueue;
 use FutureShop\Helpers\WP\Hooks;
 
 /**
@@ -119,16 +120,7 @@ class Pages {
 			return;
 		}
 
-		$file    = SCRIPT_DEBUG ? 'dev' : 'build';
-		$version = SCRIPT_DEBUG ? time() : Plugin::version();
-
-		wp_enqueue_script(
-			'future-shop',
-			Plugin::url() . "dist/$file.js",
-			[ 'wp-element' ],
-			$version,
-			true
-		);
+		Enqueue::script( 'app', 'app.js', [ 'wp-element' ] );
 	}
 
 	/**

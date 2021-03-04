@@ -1,0 +1,23 @@
+{
+    "extends": [
+        "plugin:@wordpress/eslint-plugin/esnext"
+    ],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "globals": {
+        "wp": true
+    },
+    "rules": {
+        "no-console": "warn",
+        "quote-props": ["error", "consistent"],
+        "key-spacing": [
+            "error",
+            {
+                "beforeColon": true,
+                "align": "colon"
+            }
+        ]
+    }
+}

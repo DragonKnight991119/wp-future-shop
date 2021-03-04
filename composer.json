@@ -19,7 +19,8 @@
         ],
         "psr-4": {
             "FutureShop\\": "admin",
-            "FutureShop\\APIs\\": "apis"
+            "FutureShop\\APIs\\": "apis",
+            "FutureShop\\Theme\\": "theme"
         }
     },
     "require": {
