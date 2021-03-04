@@ -1,0 +1,44 @@
+name: Coding Standards
+
+on:
+  pull_request:
+    branches:
+      - default
+
+jobs:
+  php:
+    name: PHP Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source branch.
+        uses: actions/checkout@v2
+
+      - name: Install Composer Dependencies
+        run: composer install
+
+      - name: Run Lint
+        run: composer lint
+  js:
+    name: JS Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source branch.
+        uses: actions/checkout@v2
+
+      - name: Install Node Dependencies
+        run: npm install --ignore-scripts
+
+      - name: Run Lint
+        run: npm run lint:js
+  css:
+    name: CSS Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source branch.
+        uses: actions/checkout@v2
+
+      - name: Install Node Dependencies
+        run: npm install --ignore-scripts
+
+      - name: Run Lint
+        run: npm run lint:css
