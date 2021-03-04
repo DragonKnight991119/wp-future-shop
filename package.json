@@ -35,6 +35,8 @@
         "start": "npm run env:start",
         "stop": "npm run env:stop",
         "restart": "npm run stop && npm run start",
+        "dev": "npm run plugin:dev",
+        "build": "npm run plugin:build",
         "cli:wp": "wp-env run cli wp",
         "env:clean": "wp-env clean",
         "env:destroy": "wp-env destroy",
@@ -43,7 +45,8 @@
         "env:stop": "wp-env stop",
         "plugin:dev": "webpack",
         "plugin:build": "BUILD_MODEL=release webpack",
-        "dev": "npm run plugin:dev"
+        "lint:js": "wp-scripts lint-js './**/*.js'",
+        "lint:css": "wp-scripts lint-style './**/*.scss'"
     },
     "dependencies": {},
     "devDependencies": {
