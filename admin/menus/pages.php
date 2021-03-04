@@ -121,6 +121,7 @@ class Pages {
 		}
 
 		Enqueue::script( 'app', 'app.js', [ 'wp-element' ] );
+		Enqueue::style( 'app', 'app.css' );
 	}
 
 	/**

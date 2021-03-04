@@ -1,4 +1,5 @@
 const path = require( 'path' );
+const glob = require( 'glob' );
 const OptimizeJS = require( 'terser-webpack-plugin' );
 const OptimizeCSS = require( 'csso-webpack-plugin' ).default;
 const ExtractCSS = require( 'mini-css-extract-plugin' );
@@ -84,7 +85,7 @@ module.exports = {
 
 			{
 				test    : /\.scss$/i,
-				include : path.resolve( process.cwd(), 'sass' ),
+				include : glob.sync( process.cwd() + '/?(admin|editor|theme)/' ),
 				exclude : path.resolve( process.cwd(), 'vendor' ),
 				use     : [
 					ExtractCSS.loader,
@@ -113,7 +114,7 @@ module.exports = {
 						options : {
 							sourceMap   : true,
 							sassOptions : {
-								includePaths : path.resolve( process.cwd(), 'sass' ),
+								includePaths : glob.sync( process.cwd() + '/?(admin|editor|theme)/' ),
 								indentType   : 'tab',
 								indentWidth  : 1,
 								outputStyle  : 'expanded',

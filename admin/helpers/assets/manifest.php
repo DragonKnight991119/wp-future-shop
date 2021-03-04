@@ -16,7 +16,7 @@ use FutureShop\Helpers\Cache\Config;
 class Manifest {
 
 	const CACHE_KEY = 'manifest';
-	const FILE      = 'dist/manifest.json';
+	const FILE      = 'build/manifest.json';
 
 	/**
 	 * Static caller for manifest data array.

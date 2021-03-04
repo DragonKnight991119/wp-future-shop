@@ -20,4 +20,13 @@ class Debug {
 	public static function script() {
 		return defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
 	}
+
+	/**
+	 * Styles debug.
+	 *
+	 * @return boolean True if in style debug mode, otherwise false.
+	 */
+	public static function style() {
+		return defined( 'STYLE_DEBUG' ) && STYLE_DEBUG;
+	}
 }

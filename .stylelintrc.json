@@ -1,9 +1,9 @@
 {
     "extends": [
-        "stylelint-config-wordpress/scss",
-        "stylelint-config-property-sort-order-smacss"
+        "stylelint-config-wordpress/scss"
     ],
     "ignoreFiles": [
+        "build/**/*.css",
         "vendor/**/*.css"
     ],
     "rules": {

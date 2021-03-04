@@ -3,7 +3,7 @@ const glob = require( 'glob' );
 const { paramCase } = require( 'change-case' );
 
 // Match all the blocks, excluding the dist and node module directories.
-const assets = glob.sync( './!(dist|node_modules|vendor)/**/+(index|editor|style|script).+(js|scss)' );
+const assets = glob.sync( './!(build|node_modules|vendor)/**/+(index|editor|style|script).+(js|scss)' );
 
 const entry = {};
 
@@ -14,9 +14,14 @@ for ( const asset of assets ) {
 	data.shift();
 
 	let entryName = paramCase( data[ data.length - 2 ] );
+	let fileName  = data[ data.length - 1 ];
 
-	if ( data[ 1 ].includes( 'editor' ) ) {
+	if ( fileName.includes( 'editor' ) ) {
 		entryName += '-editor';
+	}
+
+	if ( path.extname( fileName ).includes( 'scss' ) ){
+		entryName += '-style';
 	}
 
 	entry[ entryName ] = asset;

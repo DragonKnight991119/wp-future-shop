@@ -73,7 +73,7 @@ abstract class Plugin {
 	 * @return string Plugin url.
 	 */
 	public static function asset( $file = '' ) {
-		return self::url() . trailingslashit( 'dist' ) . $file;
+		return self::url() . trailingslashit( 'build' ) . $file;
 	}
 
 	/**
