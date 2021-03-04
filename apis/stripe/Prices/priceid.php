@@ -59,6 +59,8 @@ class PriceID extends Core {
 	/**
 	 * Retrieve a single price, based on the price ID.
 	 *
+	 * @param object $request Request object.
+	 *
 	 * @return array JSON ready array.
 	 */
 	public static function single( object $request ) {
@@ -68,8 +70,10 @@ class PriceID extends Core {
 	/**
 	 * Retrieve a single price, based on the price ID.
 	 * Updates the specified price by setting the values of the parameters passed. Any parameters not provided are left unchanged.
-	 * 
+	 *
 	 * Note: After prices are created, you can only update their metadata, nickname, and active fields. So we'll update the original price to inactive and create a new one.
+	 *
+	 * @param object $request Request object.
 	 *
 	 * @return array JSON ready array.
 	 */
@@ -77,34 +81,34 @@ class PriceID extends Core {
 
 		$params = $request->get_params();
 
-		self::StripeClient()->prices->update( 
+		self::StripeClient()->prices->update(
 			$request->get_param( 'id' ),
-			[ 
-				array (
-					'active' => false
-				)
+			[
+				[
+					'active' => false,
+				],
 			]
 		);
 
 		// Unset the price ID so it isn't used in the next call to create a new price.
-		if ( !empty( $params['id'] ) ) {
+		if ( ! empty( $params['id'] ) ) {
 			unset( $params['id'] );
 		}
 
 		$params['currency'] = FSStripe::get_store_currency();
-		
+
 		return self::StripeClient()->prices->create( $params );
 	}
 
 	/**
 	 * Delete a single price, based on the price ID.
 	 *
-	 * @todo Implement parameters.
+	 * @param object $request Request object.
 	 *
 	 * @return array JSON ready array.
 	 */
 	public static function delete( object $request ) {
-		return self::StripeClient()->prices->delete( $request->get_param( 'id' )  );
+		return self::StripeClient()->prices->delete( $request->get_param( 'id' ) );
 	}
 }
 

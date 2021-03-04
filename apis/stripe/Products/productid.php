@@ -48,22 +48,26 @@ class ProductID extends Core {
 				[
 					'methods'  => 'DELETE',
 					'callback' => [ __CLASS__, 'delete' ],
-				]
-			]
+				],
+			],
 		];
 	}
 
 	/**
 	 * Retrieve a single product, based on the product ID.
 	 *
+	 * @param object $request Request object.
+	 *
 	 * @return array JSON ready array.
 	 */
 	public static function single( object $request ) {
-		return self::StripeClient()->products->retrieve( $request->get_param( 'id' )  );
+		return self::StripeClient()->products->retrieve( $request->get_param( 'id' ) );
 	}
 
 	/**
 	 * Retrieve a single product, based on the product ID.
+	 *
+	 * @param object $request Request object.
 	 *
 	 * @return array JSON ready array.
 	 */
@@ -75,7 +79,7 @@ class ProductID extends Core {
 				'description' => $request->get_param( 'description' ),
 				'images'      => [
 					$request->get_param( 'featured_image' ),
-				]
+				],
 			]
 		);
 	}
@@ -83,12 +87,12 @@ class ProductID extends Core {
 	/**
 	 * Delete a single product, based on the product ID.
 	 *
-	 * @todo Implement parameters.
+	 * @param object $request Request object.
 	 *
 	 * @return array JSON ready array.
 	 */
 	public static function delete( object $request ) {
-		return self::StripeClient()->products->delete( $request->get_param( 'id' )  );
+		return self::StripeClient()->products->delete( $request->get_param( 'id' ) );
 	}
 }
 
