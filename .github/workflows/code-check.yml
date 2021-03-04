@@ -7,7 +7,7 @@ on:
 
 jobs:
   php:
-    name: PHP Validation
+    name: PHP
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source branch.
@@ -19,7 +19,7 @@ jobs:
       - name: Run Lint
         run: composer lint
   js:
-    name: JS Validation
+    name: JS
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source branch.
@@ -31,7 +31,7 @@ jobs:
       - name: Run Lint
         run: npm run lint:js
   css:
-    name: CSS Validation
+    name: CSS
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source branch.
