@@ -47,6 +47,15 @@ class Bootstrap {
 	}
 
 	/**
+	 * Loads the public frontend.
+	 *
+	 * @wp.hook action after_setup_theme
+	 */
+	public static function theme() {
+		new Theme\Cart\Init( __CLASS__ );
+	}
+
+	/**
 	 * Registers Proxy API route classes.
 	 *
 	 * @wp.hook action rest_api_init

@@ -37,14 +37,14 @@ class Product extends Core {
 			'args'      => [
 				'methods'  => 'POST',
 				'callback' => [ __CLASS__, 'create' ],
-			]
+			],
 		];
 	}
 
 	/**
 	 * Create a single product, based on the product ID.
 	 *
-	 * @todo Implement parameters.
+	 * @param object $request Request object.
 	 *
 	 * @return array JSON ready array.
 	 */
@@ -53,11 +53,11 @@ class Product extends Core {
 			[
 				'name'        => $request->get_param( 'name' ),
 				'description' => $request->get_param( 'description' ),
-				'active'      => true,// force true on creation
-				'type'        => 'good',// force good on creation
+				'active'      => true,
+				'type'        => 'good',
 				'images'      => [
 					$request->get_param( 'featured_image' ),
-				]
+				],
 			]
 		);
 	}

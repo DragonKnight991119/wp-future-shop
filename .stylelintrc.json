@@ -1,0 +1,24 @@
+{
+    "extends": [
+        "stylelint-config-wordpress/scss"
+    ],
+    "ignoreFiles": [
+        "build/**/*.css",
+        "vendor/**/*.css"
+    ],
+    "rules": {
+        "at-rule-empty-line-before": null,
+        "no-descending-specificity": null,
+        "font-weight-notation": null,
+        "color-hex-case": "upper",
+        "function-parentheses-space-inside": "always",
+        "string-quotes": "single",
+        "selector-class-pattern": "^([a-z][-a-z0-9]*)(__[a-z0-9]+)*$",
+        "rule-empty-line-before": [
+            "always",
+            {
+                "except": ["first-nested"]
+            }
+        ]
+    }
+}

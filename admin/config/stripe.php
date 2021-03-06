@@ -34,7 +34,7 @@ class Stripe {
 	 * @return void.
 	 */
 	public static function register_settings() {
-		\register_setting( self::OPTION_NAME . '_group', self::OPTION_NAME );	
+		\register_setting( self::OPTION_NAME . '_group', self::OPTION_NAME );
 	}
 
 	/**

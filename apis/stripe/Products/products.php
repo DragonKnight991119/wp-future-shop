@@ -37,7 +37,7 @@ class Products extends Core {
 			'args'      => [
 				'methods'  => 'GET',
 				'callback' => [ __CLASS__, 'all' ],
-			]
+			],
 		];
 	}
 

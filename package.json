@@ -2,27 +2,6 @@
     "name": "future-shop",
     "version": "0.0.1",
     "description": "",
-    "engines": {
-        "node": ">=10.0.0",
-        "npm": ">=6.9.0"
-    },
-    "scripts": {
-        "postinstall": "composer install",
-        "start": "npm run env:start",
-        "stop": "npm run env:stop",
-        "restart": "npm run stop && npm run start",
-        "cli:wp": "wp-env run cli wp",
-        "env:clean": "wp-env clean",
-        "env:destroy": "wp-env destroy",
-        "env:logs": "wp-env logs",
-        "env:start": "wp-env start",
-        "env:stop": "wp-env stop",
-        "dev": "webpack"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/future-shop/wp-future-shop.git"
-    },
     "keywords": [
         "stripe",
         "ecommerce",
@@ -31,20 +10,80 @@
         "store",
         "simple"
     ],
-    "author": "Justin Kopepasah <justin@kopepasah.com>",
-    "license": "MPL-2.0",
+    "homepage": "https://github.com/future-shop/wp-future-shop#readme",
     "bugs": {
         "url": "https://github.com/future-shop/wp-future-shop/issues"
     },
-    "homepage": "https://github.com/future-shop/wp-future-shop#readme",
-    "dependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/future-shop/wp-future-shop.git"
+    },
+    "license": "MPL-2.0",
+    "author": "Justin Kopepasah <justin@kopepasah.com> (https://kopepasah.com)",
+    "contributors": [
+        {
+            "name": "Justin Kopepasah",
+            "email": "justin@kopepasah.com"
+        },
+        {
+            "name": "Nate Finch",
+            "email": "finchproservices@gmail.com"
+        }
+    ],
+    "scripts": {
+        "postinstall": "composer install",
+        "start": "npm run env:start",
+        "stop": "npm run env:stop",
+        "restart": "npm run stop && npm run start",
+        "dev": "npm run plugin:dev",
+        "build": "npm run plugin:build",
+        "cli:wp": "wp-env run cli wp",
+        "env:clean": "wp-env clean",
+        "env:destroy": "wp-env destroy",
+        "env:logs": "wp-env logs",
+        "env:start": "wp-env start",
+        "env:stop": "wp-env stop",
+        "plugin:dev": "webpack",
+        "plugin:build": "BUILD_MODEL=release webpack",
+        "lint": "npm-run-all lint:*",
+        "lint:php": "composer lint",
+        "lint:js": "wp-scripts lint-js './**/*.js'",
+        "lint:css": "wp-scripts lint-style './**/*.scss'"
+    },
     "devDependencies": {
-        "@babel/core": "^7.12.10",
-        "@babel/preset-env": "^7.12.11",
-        "@babel/preset-react": "^7.12.10",
+        "@wordpress/babel-preset-default": "^4.19.0",
         "@wordpress/env": "^3.0.0",
+        "@wordpress/eslint-plugin": "^7.3.0",
+        "@wordpress/scripts": "^12.2.1",
+        "autoprefixer": "^10.0.0",
         "babel-loader": "^8.2.2",
+        "browser-sync": "^2.26.12",
+        "browser-sync-webpack-plugin": "^2.2.2",
+        "change-case": "^4.1.2",
+        "clean-webpack-plugin": "^3.0.0",
+        "csso-webpack-plugin": "^2.0.0-beta.1",
+        "eslint": "^7.12.1",
+        "eslint-loader": "^4.0.2",
+        "eslint-webpack-plugin": "^2.1.0",
+        "glob": "^7.1.6",
+        "mini-css-extract-plugin": "^0.11.2",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.0.7",
+        "postcss-loader": "^4.0.2",
+        "sass": "^1.26.11",
+        "sass-loader": "^10.0.2",
+        "stylelint-config-property-sort-order-smacss": "^6.3.0",
+        "stylelint-config-wordpress": "github:WordPress-Coding-Standards/stylelint-config-wordpress#master",
+        "stylelint-webpack-plugin": "^2.1.0",
+        "terser-webpack-plugin": "^4.2.2",
         "webpack": "^4.44.2",
-        "webpack-cli": "^3.3.12"
+        "webpack-cli": "^3.3.12",
+        "webpack-fix-style-only-entries": "^0.5.1",
+        "webpack-manifest-plugin": "^3.0.0",
+        "webpackbar": "^4.0.0"
+    },
+    "engines": {
+        "node": ">=10.0.0",
+        "npm": ">=6.9.0"
     }
 }

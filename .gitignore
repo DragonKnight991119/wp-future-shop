@@ -3,7 +3,9 @@
 
 # JavaScript (Node.js & NPM)
 node_modules
-dist
 
 # PHP (Composer)
 vendor
+
+# Dist files
+build

@@ -45,7 +45,7 @@ class Price extends Core {
 	/**
 	 * Create a single price, based on the price ID.
 	 *
-	 * @todo Implement parameters.
+	 * @param object $request Request object.
 	 *
 	 * @return array JSON ready array.
 	 */
@@ -53,10 +53,10 @@ class Price extends Core {
 
 		$params = $request->get_params();
 
-		if ( !empty( $params['id'] ) ) {
+		if ( ! empty( $params['id'] ) ) {
 			unset( $params['id'] );
 		}
-		
+
 		return self::StripeClient()->prices->create(
 			[
 				'unit_amount' => $params['unit_amount'],

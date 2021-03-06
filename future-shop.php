@@ -37,6 +37,17 @@ abstract class Plugin {
 	}
 
 	/**
+	 * Gets a file path, within the plugin.
+	 *
+	 * @param string $file Path to file, relative to plugin root.
+	 *
+	 * @return string Plugin file.
+	 */
+	public static function path( $file = '' ) {
+		return self::dir() . $file;
+	}
+
+	/**
 	 * Gets the plugin file path.
 	 *
 	 * @return string Plugin file.
@@ -52,6 +63,17 @@ abstract class Plugin {
 	 */
 	public static function url() {
 		return plugin_dir_url( __FILE__ );
+	}
+
+	/**
+	 * Gets the url to an asset, relative to the plugin root.
+	 *
+	 * @param string $file Asset file.
+	 *
+	 * @return string Plugin url.
+	 */
+	public static function asset( $file = '' ) {
+		return self::url() . trailingslashit( 'build' ) . $file;
 	}
 
 	/**
