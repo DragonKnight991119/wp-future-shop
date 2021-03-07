@@ -57,16 +57,15 @@ class Enqueue {
 		if ( empty( $slug ) ) {
 			return;
 		}
-
 		$file = str_replace( '.css', '-style.css', $file );
-
+		
 		$version = Debug::style() ? time() : Plugin::version();
 		$slug    = ! empty( $slug ) ? self::PREFIX . '-' . $slug : false;
-
+		
 		if ( array_key_exists( $file, Manifest::data() ) ) {
 			$file = Manifest::data( $file );
 		}
-
+		
 		if ( ! empty( $file ) && file_exists( Plugin::path( 'build/' . $file ) ) ) {
 			wp_enqueue_style( $slug, Plugin::asset( $file ), $deps, $version, $media );
 		}
