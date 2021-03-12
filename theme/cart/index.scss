@@ -1,6 +1,6 @@
 #future-shop-menu-cart {
 	img {
-		height:20px;
+		height: 20px;
 	}
 }
 
@@ -34,6 +34,14 @@
 		-webkit-animation-duration: 0.4s;
 		animation-name: slidein;
 		animation-duration: 0.4s;
+
+		@media (max-width: 1000px) {
+			width: 75%;
+		}
+
+		@media (max-width: 800px) {
+			width: 95%;
+		}
 	}
 
 	.cart-item {
@@ -66,12 +74,11 @@
 
 				.quantity-selector {
 					display: flex;
-					align-items: center;	
+					align-items: center;
 
 					label {
 						display: none;
 					}
-
 				}
 
 				button {
@@ -87,9 +94,9 @@
 
 				input {
 					height: 20px;
-					width: 40px;
-					padding: 0px;
+					padding: 0;
 					text-align: center;
+					width: 40px;
 				}
 
 				.remove-item {
