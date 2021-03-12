@@ -39,6 +39,16 @@ class Init {
 		Enqueue::script( self::SLUG, self::FILE );
 		Enqueue::style( self::SLUG, self::STYLE );
 
+		// Bring in StripeJS for the cart, we need it for checkout.
+		wp_enqueue_script(
+			'stripe-js',
+			'//js.stripe.com/v3',
+			[],
+			false,
+			false
+		);
+
+		// Send any info the cart might need to the frontend.
 		wp_localize_script(
 			'future-shop-cart',
 			'future_shop',
@@ -75,7 +85,7 @@ class Init {
 				</div>
 				<p>Shipping, taxes, and discounts calculated at checkout.</p>
 				<div class="checkout-options">
-					<button>Checkout</button>
+					<button id="future-shop-stripe-checkout-button" class="checkout-button">Checkout</button>
 				</div>
 			</div>
 			</div>
