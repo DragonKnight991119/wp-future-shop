@@ -38,6 +38,12 @@ class Init {
 	public static function enqueue_scripts() {
 		Enqueue::script( self::SLUG, self::FILE );
 		Enqueue::style( self::SLUG, self::STYLE );
+
+		wp_localize_script(
+			'future-shop-cart',
+			'future_shop',
+			[ 'cart_svg' => file_get_contents( __DIR__ . '/cart.svg' ) ] 
+		);
 	}
 	/**
 	 * Cart Template.
@@ -48,20 +54,41 @@ class Init {
 	 */
 	public static function cart_template() {
 		?>
-		<div id="myModal" class="modal">
+		<div id="future-shop-cart-background" class="future-shop-cart-background">
 
 			<!-- Modal content -->
-			<div class="modal-content">
-			<div class="modal-header">
-				<span class="close">&times;</span>
-				<h2>Modal Header</h2>
+			<div class="future-shop-cart-content">
+			<div class="cart-header">
+				<span id="cart-close" class="cart-close" title="close">Close &times;</span>
+				<h3>Cart</h3>
 			</div>
-			<div class="modal-body">
-				<p>Some text in the Modal Body</p>
-				<p>Some other text...</p>
+			<div class="cart-body">
+				<div class="cart-item">
+					<div class="item-image">
+						<img src="https://placehold.it/50x50" alt="item title">
+					</div>
+					<div class="item-contents">
+						<span class="item-title">
+							Widget 1
+						</span>
+						<div class="cart-actions">
+							<div class="quantity-selector">
+								<label for="" class="hidden">Quantity</label>
+								<button class="item-decrement" type="button" aria-label="Reduce item quantity by one">-</button>
+								<input type="number" id="" class="item-quantity-input" min="0" value="1">
+								<button class="item-increment" type="button" aria-label="Increase item quantity by one">+</button>
+							</div>
+							<div class="item-price">
+								$9.99
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="modal-footer">
-				<h3>Modal Footer</h3>
+			<div class="cart-footer">
+				<h4>Subtotal</h3>
+				<p>Shipping, taxes, and discounts calculated at checkout.</p>
+				<button>Checkout</button>
 			</div>
 			</div>
 
