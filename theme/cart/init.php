@@ -62,35 +62,7 @@ class Init {
 				<span id="cart-close" class="cart-close" title="close">&times;</span>
 				<h4>Cart</h4>
 			</div>
-			<div class="cart-body">
-				<div class="cart-item">
-					<div class="item-image">
-						<a href="#link-to-product">
-							<img src="https://placehold.it/50x50" alt="item title">
-						</a>
-					</div>
-					<div class="item-contents">
-						<span class="item-title">
-							<a href="#link-to-product">
-								Widget 1
-							</a>
-						</span>
-						<div class="cart-actions">
-							<div class="quantity-selector">
-								<label for="" class="hidden">Quantity</label>
-								<button class="item-decrement" type="button" aria-label="Reduce item quantity by one" title="Reduce item quantity by one">-</button>
-								<input type="text" id="" class="item-quantity-input" min="0" readonly>
-								<button class="item-increment" type="button" aria-label="Increase item quantity by one" title="Increase item quantity by one">+</button>
-							</div>
-							<div class="remove-item">
-								<button aria-label="Remove item" title="Remove item">&times;</button>
-							</div>
-						</div>
-					</div>
-					<div class="item-price">
-						$9.99
-					</div>
-				</div>
+			<div id="cart-body" class="cart-body">
 			</div>
 			<div class="cart-footer">
 				<div class="subtotal-group">

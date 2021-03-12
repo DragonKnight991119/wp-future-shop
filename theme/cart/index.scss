@@ -133,7 +133,9 @@
 	}
 
 	.cart-body {
+		max-height: 50vh;
 		min-height: 20vh;
+    	overflow: auto;
 		padding: 4rem 1rem;
 	}
 
