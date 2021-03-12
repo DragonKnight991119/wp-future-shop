@@ -8,9 +8,9 @@
 namespace FutureShop\Theme\Cart;
 
 use FutureShop\Plugin;
-use FutureShop\Helpers\Assets\Enqueue;
+use FutureShop\Config\Stripe;
 use FutureShop\Helpers\WP\Hooks;
-
+use FutureShop\Helpers\Assets\Enqueue;
 /**
  * Admin Menus
  */
@@ -42,7 +42,11 @@ class Init {
 		wp_localize_script(
 			'future-shop-cart',
 			'future_shop',
-			[ 'cart_svg' => file_get_contents( __DIR__ . '/cart.svg' ), 'cart_src' => plugin_dir_url( __DIR__ ) . 'cart/cart.svg' ] 
+			[ 
+				'cart_svg' => file_get_contents( __DIR__ . '/cart.svg' ),
+				'cart_src' => plugin_dir_url( __DIR__ ) . 'cart/cart.svg',
+				'fs_pk'    => Stripe::public_key()
+			] 
 		);
 	}
 	/**
@@ -67,7 +71,7 @@ class Init {
 			<div class="cart-footer">
 				<div class="subtotal-group">
 					<span>Subtotal</span>
-					<span>$99.99</span>
+					<span id="cart-subtotal"></span>
 				</div>
 				<p>Shipping, taxes, and discounts calculated at checkout.</p>
 				<div class="checkout-options">

@@ -8,6 +8,7 @@ window.FutureShop = {
 	cartMenuButton: '',
 	cartCloseButton: '',
 	addToCartButton: '',
+	cartSubtotal: 0,
 
 	initialize: function() {
 		this.setInitialProps();
@@ -55,14 +56,13 @@ window.FutureShop = {
 		this.showCartItems();
 	},
 	closeCart: function(e) {
-		const cartBody = document.getElementById('cart-body');
-		cartBody.innerHTML = '';
+		if (e.target.id === this.cartModal.id || e.target.id === this.cartClose.id) {
+			// Clear cart body before closing... for now.
+			// TODO: work off of cart state, rather than just the DOM.
+			const cartBody = document.getElementById('cart-body');
+			cartBody.innerHTML = '';
 
-		// Close cart on close button.
-		this.cartModal.style.display = "none";
-
-		// Close cart on window background click.
-		if (e.target == this.cartModal) {
+			// Close the cart.
 			this.cartModal.style.display = "none";
 		}
 	},
@@ -129,16 +129,24 @@ window.FutureShop = {
 		}
 
 		for(const item of cart ) {
-			console.log(item)
+			// Ceate the item for the cart
 			let newItem = document.createElement("div");
 			newItem.classList.add('cart-item');   
 			newItem.innerHTML = this.makeCartItem(item);
+			// Add new item to cart.
 			cartBody.appendChild(newItem)
+
+			// Pass price to be subtotaled.
+			this.cartSubtotal += parseInt(item.price);
 		}
+
+		const subtotal = document.getElementById('cart-subtotal')
+
+		subtotal.innerText = this.getCartSubtotal();
 	},
 	parsePrice: function(price) {
 		// parse the price of the item
-		return price;
+		return '$' + (parseInt(price) / 100 ).toFixed(2);;
 	},
 	removeCartItem: function() {
 		// when someone x's out an item
@@ -149,11 +157,13 @@ window.FutureShop = {
 	incrementItem: function() {
 		// increse quanity by 1
 	},
-	getCartTotal: function() {
+	getCartSubtotal: function() {
 		// take the total prices from the cart state and add them
+		return '$' + (parseInt(this.cartSubtotal) / 100 ).toFixed(2);
 	},
-	setCartTotal: function() {
+	setCartSubtotal: function() {
 		// getCartTotal and manipulate it to be the right format, e.g. from 999 to $9.99
+		
 	}
 
 };
