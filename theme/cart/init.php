@@ -42,7 +42,7 @@ class Init {
 		wp_localize_script(
 			'future-shop-cart',
 			'future_shop',
-			[ 'cart_svg' => file_get_contents( __DIR__ . '/cart.svg' ) ] 
+			[ 'cart_svg' => file_get_contents( __DIR__ . '/cart.svg' ), 'cart_src' => plugin_dir_url( __DIR__ ) . 'cart/cart.svg' ] 
 		);
 	}
 	/**
