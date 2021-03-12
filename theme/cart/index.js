@@ -6,7 +6,7 @@ var cartMenuButton = document.getElementById("future-shop-menu-cart");
 
 // Get the <span> element that closes the modal
 var cartClose = document.getElementById("cart-close");
-console.log(future_shop.cart_svg)
+
 cartMenuButton.innerHTML = future_shop.cart_svg;
 cartMenuButton.innerText = '🛒';
 
