@@ -9,6 +9,7 @@ window.FutureShop = {
 	cartIsOpen: false,
 	cartMenuButton: '',
 	cartModal: '',
+	cartQuantity: 0,
 	cartSubtotal: 0,
 	checkoutButton: '',
 	localStorageKey: 'futureShopCart',
@@ -178,7 +179,6 @@ window.FutureShop = {
 		// increse quantity by 1
 	},
 	getCartSubtotal: function() {
-		console.log(this.cartSubtotal)
 		// Manipulate it to be the right format, e.g. from 999 to $9.99
 		return this.parsePrice(this.cartSubtotal, 1);
 	},
@@ -203,7 +203,6 @@ window.FutureShop = {
 			};
 		});
 
-		console.log(lineItems)
 		this.stripe.redirectToCheckout({
 			lineItems,
 			mode: 'payment',
@@ -218,6 +217,39 @@ window.FutureShop = {
 			}).then(function (result) {
 				console.error(result);
 			});
+	},
+	getCartQuantity: function() {
+		// Get the total quantity of the items in the cart
+		const cart = this.getCartItems();
+		let quantity = 0;
+
+		if(0 === cart.length) {
+			this.setCartQuantity(quantity);
+			return;
+		}
+
+		for(const item of cart ) {
+			quantity += parseInt(item.quantity);
+			console.log(item)
+		}
+		console.log(quantity)
+		this.setCartQuantity(quantity);
+	},
+	setCartQuantity: function(quantity) {
+		// Set quantity in any cart button.
+		for(const button of this.cartMenuButton) {
+			let buttonHtml = button.innerHTML;
+
+			if(0 < this.cartQuantity) {
+				buttonHtml += `<span class="cart-quantity">${this.cartQuantity}</span>`;
+			}
+
+			button.innerHTML = buttonHtml;
+			button.addEventListener('click', (e) => {this.openCart(e)});
+		}
+
+		// Set the total quantity of the items in the cart
+		this.cartQuantity = quantity;
 	}
 
 };
