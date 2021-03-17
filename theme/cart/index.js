@@ -111,7 +111,7 @@ window.FutureShop = {
 		return this.cart;
 	},
 	addCartItem: function(e) {
-		const productData = e.target.dataset
+		const productData = JSON.parse(JSON.stringify(e.target.dataset));
 		const cart = this.getCartItems();
 
 		// Add new product data to cart.
