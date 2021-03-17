@@ -44,8 +44,8 @@ class Init {
 			'stripe-js',
 			'//js.stripe.com/v3',
 			[],
-			false,
-			Plugin::version()
+			Plugin::version(),
+			false
 		);
 
 		// Send any info the cart might need to the frontend.

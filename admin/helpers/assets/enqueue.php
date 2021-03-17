@@ -1,6 +1,6 @@
 <?php
 /**
- * Enqueing assets.
+ * Enqueueing assets.
  *
  * @package FutureShop
  */
