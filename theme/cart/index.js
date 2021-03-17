@@ -26,7 +26,6 @@ window.FutureShop = {
 		this.cartClose = document.getElementById("cart-close");
 		this.addToCartButton = document.getElementsByClassName("add-to-cart");
 		this.checkoutButton = document.getElementById("future-shop-stripe-checkout-button");
-		// this.cartMenuButton.innerHTML = `<img src="${future_shop.cart_src}" alt="Shopping Cart"/>`;
 	},
 	addInitialListeners: function() {
 		this.cartClose.addEventListener('click', (e) => {this.closeCart(e)});
@@ -37,6 +36,8 @@ window.FutureShop = {
 			button.innerHTML = `<img src="${future_shop.cart_src}" alt="Shopping Cart"/>`;
 			button.addEventListener('click', (e) => {this.openCart(e)});
 		}
+
+		this.getCartQuantity();
 
 		// Set any add-to-cart buttons.
 		for(const button of this.addToCartButton) {
@@ -119,6 +120,7 @@ window.FutureShop = {
 		localStorage.setItem(this.localStorageKey, JSON.stringify(cart) );
 		this.cartSubtotal = 0;
 		// From here on, we basically rehydrate the cart.
+		this.getCartQuantity();
 		this.clearCart();
 		this.showCartItems();
 		// Add listeners to the increment, decrement, and remove buttons.
@@ -295,16 +297,17 @@ window.FutureShop = {
 		for(const item of cart ) {
 			quantity += parseInt(item.quantity);
 		}
-		
+
 		this.setCartQuantity(quantity);
 	},
 	setCartQuantity: function(quantity) {
+
 		// Set quantity in any cart button.
 		for(const button of this.cartMenuButton) {
 			let buttonHtml = button.innerHTML;
 
-			if(0 < this.cartQuantity) {
-				buttonHtml += `<span class="cart-quantity">${this.cartQuantity}</span>`;
+			if(0 < quantity) {
+				buttonHtml += `<span class="cart-quantity">${quantity}</span>`;
 			}
 
 			button.innerHTML = buttonHtml;
