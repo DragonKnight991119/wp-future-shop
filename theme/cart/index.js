@@ -53,12 +53,13 @@ window.FutureShop = {
 	},
 	openCart: function(e) {
 		e.preventDefault();
+		const cart = this.getCartItems();
 		this.cartModal.style.display = "block";
 		this.cartClose.focus();
 		this.cartSubtotal = 0;
 
-		// Add items to cart
-		this.showCartItems();
+		// Hydrate the cart.
+		this.updateCart(cart);
 
 		// Add listeners to the increment, decrement, and remove buttons.
 		this.setupCartActionButtons();
@@ -113,8 +114,14 @@ window.FutureShop = {
 	getCartItems: function() {
 		return this.cart;
 	},
+	clearCart: function() {
+		const cartBody = document.getElementById('cart-body');
+		cartBody.innerHTML = '';
+	},
 	updateCart: function(cart) {
 		localStorage.setItem(this.localStorageKey, JSON.stringify(cart) );
+		this.clearCart();
+		this.showCartItems();
 	},
 	addCartItem: function(e) {
 		// Stringify and parse the dataset so it's an object and not a DOMStringMap.
