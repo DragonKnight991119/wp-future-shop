@@ -45,18 +45,17 @@ class Init {
 			'//js.stripe.com/v3',
 			[],
 			false,
-			false
+			Plugin::version()
 		);
 
 		// Send any info the cart might need to the frontend.
 		wp_localize_script(
 			'future-shop-cart',
 			'future_shop',
-			[ 
-				'cart_svg' => file_get_contents( __DIR__ . '/cart.svg' ),
+			[
 				'cart_src' => plugin_dir_url( __DIR__ ) . 'cart/cart.svg',
-				'fs_pk'    => Stripe::public_key()
-			] 
+				'fs_pk'    => Stripe::public_key(),
+			]
 		);
 	}
 	/**
