@@ -50,16 +50,6 @@ window.FutureShop = {
 			this.checkoutButton.disabled = true;
 			console.error('Oh no, it looks like Stripe has not be added or is not responding');
 		}
-
-
-		window.addEventListener('storage', (e) => {this.handleStorageEvent(e)});
-	},
-	handleStorageEvent: function(storageEvent) {
-		console.log('storage!')
-		if(this.localStorageKey === storageEvent.key) {
-			// handle when something is stored to the cart
-			console.log('cart storage');
-		}
 	},
 	openCart: function(e) {
 		e.preventDefault();
