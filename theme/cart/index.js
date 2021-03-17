@@ -111,14 +111,12 @@ window.FutureShop = {
 		return this.cart;
 	},
 	addCartItem: function(e) {
+		// Stringify and parse the dataset so it's an object and not a DOMStringMap.
 		const productData = JSON.parse(JSON.stringify(e.target.dataset));
 		const cart = this.getCartItems();
 
-		// Add new product data to cart.
-		cart.push(productData);
-
 		// Set the cart state.
-		this.cart = cart;
+		this.cart = this.deduplicateCartItems(cart, productData);
 
 		// TODO: dedupe products added more than once, just increase the quantity
 
@@ -126,6 +124,25 @@ window.FutureShop = {
 
 		// Open cart whenever an item is added.
 		this.openCart(e);
+	},
+	deduplicateCartItems: function(cart, newItem) {
+
+		let duplicate = false;
+
+		for( index in cart ) {
+			if( cart[index]['priceId'] === newItem.priceId ) {
+				cart[index]['quantity'] = parseInt(cart[index]['quantity']) + parseInt(newItem['quantity']);
+
+				return cart;
+			}
+		}
+
+		if( !duplicate ) {
+			// Add new product data to cart.
+			cart.push(newItem);
+		}
+
+		return cart;
 	},
 	showCartItems: function() {
 		const cart = this.getCartItems();
