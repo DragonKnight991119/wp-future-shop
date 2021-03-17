@@ -61,9 +61,6 @@ window.FutureShop = {
 		// Hydrate the cart.
 		this.updateCart(cart);
 
-		// Add listeners to the increment, decrement, and remove buttons.
-		this.setupCartActionButtons();
-
 		// Update checkout button.
 		this.setupCheckoutButton(e);
 	},
@@ -120,8 +117,12 @@ window.FutureShop = {
 	},
 	updateCart: function(cart) {
 		localStorage.setItem(this.localStorageKey, JSON.stringify(cart) );
+		this.cartSubtotal = 0;
+		// From here on, we basically rehydrate the cart.
 		this.clearCart();
 		this.showCartItems();
+		// Add listeners to the increment, decrement, and remove buttons.
+		this.setupCartActionButtons();
 	},
 	addCartItem: function(e) {
 		// Stringify and parse the dataset so it's an object and not a DOMStringMap.
@@ -184,17 +185,18 @@ window.FutureShop = {
 	},
 	parsePrice: function(price, quantity) {
 		// parse the price of the item
+		// TODO: will need to sub in the currency symbol here.
 		return '$' + ( (parseInt(price) * parseInt(quantity)) / 100 ).toFixed(2);;
 	},
 	decrementItem: function(e) {
 		// decrese quantity by 1
-		console.log(e.target);
-		console.log(e.target.dataset);
-		for( index in cart ) {
-			if( cart[index]['priceId'] === newItem.priceId ) {
-				cart[index]['quantity'] = parseInt(cart[index]['quantity']) + parseInt(newItem['quantity']);
+		const cart = this.getCartItems();
 
-				return cart;
+		for( index in cart ) {
+			if( cart[index]['priceId'] === e.target.dataset.priceId ) {
+				// Make sure this doesn't get below 1, otherwise they can remove it.
+				cart[index]['quantity'] = ( 0 < parseInt(cart[index]['quantity']) - 1 ) ? parseInt(cart[index]['quantity']) - 1 : 1;
+				this.updateCart(cart);
 			}
 		}
 	},
@@ -202,11 +204,18 @@ window.FutureShop = {
 		// increse quantity by 1
 		const cart = this.getCartItems();
 
+		for( index in cart ) {
+			if( cart[index]['priceId'] === e.target.dataset.priceId ) {
+				cart[index]['quantity'] = parseInt(cart[index]['quantity']) + 1;
+
+				this.updateCart(cart);
+			}
+		}
 
 	},
 	removeCartItem: function(e) {
 		const cart = this.getCartItems();
-		console.log(cart)
+
 		for( index in cart ) {
 			if( cart[index]['priceId'] === e.target.dataset.priceId ) {
 				cart.splice(index, 1);
@@ -217,7 +226,7 @@ window.FutureShop = {
 
 	},
 	getCartSubtotal: function() {
-		// Manipulate it to be the right format, e.g. from 999 to $9.99
+		// Manipulate it to be the right format, e.g. from 999 to $9.99.
 		return this.parsePrice(this.cartSubtotal, 1);
 	},
 	setCartSubtotal: function(price, quantity) {
@@ -285,9 +294,8 @@ window.FutureShop = {
 
 		for(const item of cart ) {
 			quantity += parseInt(item.quantity);
-			console.log(item)
 		}
-		console.log(quantity)
+		
 		this.setCartQuantity(quantity);
 	},
 	setCartQuantity: function(quantity) {
