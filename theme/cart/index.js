@@ -60,6 +60,9 @@ window.FutureShop = {
 		// Add items to cart
 		this.showCartItems();
 
+		// Add listeners to the increment, decrement, and remove buttons.
+		this.setupCartActionButtons();
+
 		// Update checkout button.
 		this.setupCheckoutButton(e);
 	},
@@ -92,14 +95,14 @@ window.FutureShop = {
 						<div class="quantity-selector">
 							<label for="" class="hidden">Quantity</label>
 
-							<button class="item-decrement" type="button" aria-label="Reduce item quantity by one" title="Reduce item quantity by one">-</button>
+							<button class="item-decrement" type="button" data-price-id="${item.priceId}" aria-label="Reduce item quantity by one" title="Reduce item quantity by one">-</button>
 							
 							<input type="text" class="item-quantity-input" min="0" value="${item.quantity}" readonly>
 							
-							<button class="item-increment" type="button" aria-label="Increase item quantity by one" title="Increase item quantity by one">+</button>
+							<button class="item-increment" type="button" data-price-id="${item.priceId}" aria-label="Increase item quantity by one" title="Increase item quantity by one">+</button>
 						</div>
 						<div class="remove-item">
-							<button aria-label="Remove item" title="Remove item">&times;</button>
+							<button class="item-remove" aria-label="Remove item" data-price-id="${item.priceId}" title="Remove item">&times;</button>
 						</div>
 					</div>
 				</div>
@@ -110,6 +113,9 @@ window.FutureShop = {
 	getCartItems: function() {
 		return this.cart;
 	},
+	updateCart: function(cart) {
+		localStorage.setItem(this.localStorageKey, JSON.stringify(cart) );
+	},
 	addCartItem: function(e) {
 		// Stringify and parse the dataset so it's an object and not a DOMStringMap.
 		const productData = JSON.parse(JSON.stringify(e.target.dataset));
@@ -118,10 +124,7 @@ window.FutureShop = {
 		// Set the cart state.
 		this.cart = this.deduplicateCartItems(cart, productData);
 
-		// TODO: dedupe products added more than once, just increase the quantity
-
-		localStorage.setItem(this.localStorageKey, JSON.stringify(cart) );
-
+		this.updateCart(cart);
 		// Open cart whenever an item is added.
 		this.openCart(e);
 	},
@@ -176,14 +179,35 @@ window.FutureShop = {
 		// parse the price of the item
 		return '$' + ( (parseInt(price) * parseInt(quantity)) / 100 ).toFixed(2);;
 	},
-	removeCartItem: function() {
-		// when someone x's out an item
-	},
-	decrementItem: function() {
+	decrementItem: function(e) {
 		// decrese quantity by 1
+		console.log(e.target);
+		console.log(e.target.dataset);
+		for( index in cart ) {
+			if( cart[index]['priceId'] === newItem.priceId ) {
+				cart[index]['quantity'] = parseInt(cart[index]['quantity']) + parseInt(newItem['quantity']);
+
+				return cart;
+			}
+		}
 	},
-	incrementItem: function() {
+	incrementItem: function(e) {
 		// increse quantity by 1
+		const cart = this.getCartItems();
+
+
+	},
+	removeCartItem: function(e) {
+		const cart = this.getCartItems();
+		console.log(cart)
+		for( index in cart ) {
+			if( cart[index]['priceId'] === e.target.dataset.priceId ) {
+				cart.splice(index, 1);
+
+				this.updateCart(cart);
+			}
+		}
+
 	},
 	getCartSubtotal: function() {
 		// Manipulate it to be the right format, e.g. from 999 to $9.99
@@ -193,6 +217,23 @@ window.FutureShop = {
 		let subtotal = parseInt(this.cartSubtotal);
 
 		this.cartSubtotal = subtotal + ( parseInt(price) * parseInt(quantity) );
+	},
+	setupCartActionButtons: function() {
+		const decrementButtons = document.getElementsByClassName('item-decrement');
+
+		for(const button of decrementButtons) {
+			button.addEventListener('click', (e) => {this.decrementItem(e)});
+		}
+
+		const incrementButtons = document.getElementsByClassName('item-increment');
+		for(const button of incrementButtons) {
+			button.addEventListener('click', (e) => {this.incrementItem(e)});
+		}
+
+		const removeButtons = document.getElementsByClassName('item-remove')
+		for(const button of removeButtons) {
+			button.addEventListener('click', (e) => {this.removeCartItem(e)});
+		}
 	},
 	setupCheckoutButton: function() {
 		// Create a new Stripe object for checkout.
