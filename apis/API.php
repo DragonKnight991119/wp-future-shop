@@ -30,7 +30,7 @@ abstract class API {
 				return register_rest_route(
 					$register['namespace'],
 					$register['route'],
-					$register['args'],
+					$register['args']
 				);
 			}
 		}

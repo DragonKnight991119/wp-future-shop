@@ -274,7 +274,7 @@ window.FutureShop = {
 	handleCheckoutButton( e ) {
 		e.preventDefault();
 
-		// TODO: make sure to deduplicate before getting here.
+		// Items should be deduplicated before getting here.
 		const lineItems = this.cart.map( ( item ) => {
 			return {
 				'price'    : item.priceId,
@@ -282,19 +282,20 @@ window.FutureShop = {
 			};
 		} );
 
+		// TODO: add in shop and thank-you pages, see about customer email on cart?
 		this.stripe.redirectToCheckout( {
 			lineItems,
 			mode                      : 'payment',
-			successUrl                : 'https://futureshop.local/thank-you',
-			cancelUrl                 : 'https://futureshop.local/shop',
+			// successUrl                : 'https://futureshop.local/thank-you',
+			// cancelUrl                 : 'https://futureshop.local/shop',
 			billingAddressCollection  : 'required',
 			shippingAddressCollection : {
 				allowedCountries : [ 'US', 'CA' ],
 			},
 			submitType    : 'pay',
-			customerEmail : 'customer@example.com',
+			// customerEmail : 'customer@example.com',
 		} ).then( function( result ) {
-			console.error( result );
+			console.error( 'There has been an error with FutureShop payments', result );
 		} );
 	},
 	getCartQuantity() {

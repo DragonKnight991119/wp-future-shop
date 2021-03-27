@@ -53,7 +53,7 @@ class Init {
 			'future-shop-cart',
 			'future_shop',
 			[
-				'cart_src' => plugin_dir_url( __DIR__ ) . 'cart/cart.svg',
+				'cart_src' => plugin_dir_url( __DIR__ ) . 'Cart/cart.svg',
 				'fs_pk'    => Stripe::public_key(),
 			]
 		);
