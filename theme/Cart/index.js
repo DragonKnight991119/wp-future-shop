@@ -292,7 +292,7 @@ window.FutureShop = {
 			shippingAddressCollection : {
 				allowedCountries : [ 'US', 'CA' ],
 			},
-			submitType    : 'pay',
+			submitType : 'pay',
 			// customerEmail : 'customer@example.com',
 		} ).then( function( result ) {
 			console.error( 'There has been an error with FutureShop payments', result );
