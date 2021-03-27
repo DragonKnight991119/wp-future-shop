@@ -44,7 +44,7 @@
         "env:start": "wp-env start",
         "env:stop": "wp-env stop",
         "plugin:dev": "webpack",
-        "plugin:build": "BUILD_MODEL=release webpack",
+        "plugin:build": "composer release && BUILD_MODEL=release webpack",
         "lint": "npm-run-all lint:*",
         "lint:php": "composer lint",
         "lint:js": "wp-scripts lint-js './**/*.js'",
