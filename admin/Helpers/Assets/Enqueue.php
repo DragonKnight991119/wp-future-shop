@@ -1,6 +1,6 @@
 <?php
 /**
- * Enqueing assets.
+ * Enqueueing assets.
  *
  * @package FutureShop
  */
@@ -57,7 +57,6 @@ class Enqueue {
 		if ( empty( $slug ) ) {
 			return;
 		}
-
 		$file = str_replace( '.css', '-style.css', $file );
 
 		$version = Debug::style() ? time() : Plugin::version();
