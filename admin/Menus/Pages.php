@@ -106,8 +106,8 @@ class Pages {
 				$data['title'],
 				$data['title'],
 				self::CAP,
-				self::SLUG . '.' . $submenu,
-				[ $data['class'], 'render' ]
+				'products' === $submenu ? '/edit.php?post_type=product' : self::SLUG . '.' . $submenu,
+				isset( $data['class'] ) ? [ $data['class'], 'render' ] : '',
 			);
 		}
 	}

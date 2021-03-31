@@ -44,6 +44,7 @@ class Bootstrap {
 	 */
 	public static function admin() {
 		new Menus\Pages( __CLASS__ );
+		new Products\Register( __CLASS__ );
 	}
 
 	/**
