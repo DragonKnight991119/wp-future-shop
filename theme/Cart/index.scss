@@ -1,3 +1,59 @@
+.future-shop-cart-bubble {
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	margin: 20px -10px;
+	position: absolute;
+	top: 0;
+	z-index: 999;
+
+	button {
+		border-radius: 100%;
+		border: 1px solid #EFEFEF;
+		background-color: #FFF;
+		padding: 1.5rem;
+		box-shadow: 0 0 1px 1px #0000001A;
+		animation: pulse-animation 2s infinite;
+
+		span.cart-quantity {
+			right: 4px;
+			top: 8px;
+		}
+	}
+
+	@keyframes pulse-animation {
+		0% {
+			box-shadow: 0 0 0 0 rgba( 0, 0, 0, 0.2 );
+		}
+
+		100% {
+			box-shadow: 0 0 0 10px rgba( 0, 0, 0, 0 );
+		}
+	}
+
+	&.top__left,
+	&.middle__left,
+	&.bottom__left {
+		left: 0;
+	}
+
+	&.top__right,
+	&.middle__right,
+	&.bottom__right {
+		right: 0;
+	}
+
+	&.middle__left,
+	&.middle__right {
+		justify-content: center;
+	}
+
+	&.bottom__left,
+	&.bottom__right {
+		justify-content: flex-end;
+	}
+}
+
 .future-shop-menu-cart {
 	position: relative;
 
@@ -16,7 +72,7 @@
 		position: absolute;
 		right: -32px;
 		text-align: center;
-		top: 0;
+		top: -6px;
 		width: 16px;
 
 		&:hover {

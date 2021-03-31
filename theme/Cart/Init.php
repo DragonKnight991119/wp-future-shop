@@ -25,7 +25,6 @@ class Init {
 	 */
 	public function __construct() {
 		Hooks::load( __CLASS__ );
-
 	}
 
 	/**
@@ -53,8 +52,9 @@ class Init {
 			'future-shop-cart',
 			'future_shop',
 			[
-				'cart_src' => plugin_dir_url( __DIR__ ) . 'Cart/cart.svg',
-				'fs_pk'    => Stripe::public_key(),
+				'cart_src'      => plugin_dir_url( __DIR__ ) . 'Cart/cart.svg',
+				'fs_pk'         => Stripe::public_key(),
+				'cart_position' => Stripe::get_options()['cart_position'],
 			]
 		);
 	}

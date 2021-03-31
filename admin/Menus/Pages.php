@@ -38,14 +38,19 @@ class Pages {
 	 */
 	const CAP = 'manage_options';
 
+	/**
+	 * Cart position options.
+	 *
+	 * @const array
+	 */
 	const CART_POSITIONS = [
 		"none"         => 'No Cart Bubble',
-		"top_left"     => 'Top Left',
-		"top_right"    => 'Top Right',
-		"middle_left"  => 'Middle Left',
-		"middle_right" => 'Middle Right',
-		"bottom_left"  => 'Bottom Left',
-		"bottom_right" => 'Bottom Right',
+		"top__left"     => 'Top Left',
+		"top__right"    => 'Top Right',
+		"middle__left"  => 'Middle Left',
+		"middle__right" => 'Middle Right',
+		"bottom__left"  => 'Bottom Left',
+		"bottom__right" => 'Bottom Right',
 	];
 
 	/**

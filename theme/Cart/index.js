@@ -9,6 +9,7 @@ window.FutureShop = {
 	cartIsOpen      : false,
 	cartMenuButton  : '',
 	cartModal       : '',
+	cartPosition    : 'none',
 	cartQuantity    : 0,
 	cartSubtotal    : 0,
 	checkoutButton  : '',
@@ -16,6 +17,7 @@ window.FutureShop = {
 
 	initialize() {
 		this.setInitialProps();
+		this.setCartBubble();
 		this.addInitialListeners();
 	},
 	setInitialProps() {
@@ -26,6 +28,7 @@ window.FutureShop = {
 		this.cartClose = document.getElementById( 'cart-close' );
 		this.addToCartButton = document.getElementsByClassName( 'add-to-cart' );
 		this.checkoutButton = document.getElementById( 'future-shop-stripe-checkout-button' );
+		this.cartPosition = window.future_shop.cart_position;
 	},
 	addInitialListeners() {
 		this.cartClose.addEventListener( 'click', ( e ) => {
@@ -59,6 +62,17 @@ window.FutureShop = {
 			this.checkoutButton.disabled = true;
 			console.error( 'Oh no, it looks like Stripe has not be added or is not responding' );
 		}
+	},
+	setCartBubble() {
+		if ( 'none' === this.cartPosition ) {
+			return;
+		}
+
+		const body = document.querySelector( 'body' );
+		const cartBubble = document.createElement( 'div' );
+		cartBubble.classList.add( 'future-shop-cart-bubble', this.cartPosition );
+		cartBubble.innerHTML = '<button class="future-shop-menu-cart"></button>';
+		body.appendChild( cartBubble );
 	},
 	openCart( e ) {
 		e.preventDefault();
