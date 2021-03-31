@@ -188,7 +188,7 @@ class Pages {
 									array(
 										'name'             => esc_attr( Stripe::OPTION_NAME . '[thank_you_page]' ),
 										'echo'             => 1,
-										'show_option_none' => __( '&mdash; Select &mdash;' ),
+										'show_option_none' => esc_attr( '&mdash; Select &mdash;' ),
 										'option_none_value' => '0',
 										'selected'         => esc_attr( $stripe_settings['thank_you_page'] ),
 									)
