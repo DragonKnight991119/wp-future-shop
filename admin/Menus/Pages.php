@@ -179,6 +179,22 @@ class Pages {
 					</select></td>
 				</tr>
 				<tr valign="top">
+					<th scope="row">Thank You Page</th>
+					<td>
+						<?php
+							wp_dropdown_pages(
+								array(
+									'name'              => Stripe::OPTION_NAME . '[thank_you_page]',
+									'echo'              => 1,
+									'show_option_none'  => __( '&mdash; Select &mdash;' ),
+									'option_none_value' => '0',
+									'selected'          => $stripe_settings['thank_you_page'],
+								)
+							);
+						?>
+					</td>
+				</tr>
+				<tr valign="top">
 					<th scope="row">Cart Bubble Position</th>
 					<td><select name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[cart_position]"/>
 						<option>--Select a cart position--</option>

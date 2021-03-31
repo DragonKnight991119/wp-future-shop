@@ -52,9 +52,10 @@ class Init {
 			'future-shop-cart',
 			'future_shop',
 			[
-				'cart_src'      => plugin_dir_url( __DIR__ ) . 'Cart/cart.svg',
-				'fs_pk'         => Stripe::public_key(),
-				'cart_position' => Stripe::get_options()['cart_position'],
+				'cart_src'       => plugin_dir_url( __DIR__ ) . 'Cart/cart.svg',
+				'fs_pk'          => Stripe::public_key(),
+				'cart_position'  => Stripe::get_options()['cart_position'],
+				'thank_you_page' => get_the_permalink( Stripe::get_options()['thank_you_page'] ),
 			]
 		);
 	}
