@@ -56,6 +56,10 @@ class Pages {
 	 * @wp.hook action admin_init
 	 */
 	public static function add_menu_seperator() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		$position = self::POSITION - 1;
 
 		$GLOBALS['menu'][ $position ] = [ // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
