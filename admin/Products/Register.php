@@ -46,6 +46,7 @@ class Register {
 		return [
 			'labels'       => self::labels(),
 			'capabilities' => [ 'manage_options' ],
+			'map_meta_cap' => true,
 			'description'  => _x( 'Products post type.', 'post type description' ),
 			'public'       => true,
 			'show_in_menu' => false,
