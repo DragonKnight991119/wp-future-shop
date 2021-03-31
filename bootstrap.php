@@ -57,6 +57,15 @@ class Bootstrap {
 	}
 
 	/**
+	 * Loads the editor.
+	 *
+	 * @wp.hook action init
+	 */
+	public static function editor() {
+		require_once __DIR__ . '/editor/load.php';
+	}
+
+	/**
 	 * Registers Proxy API route classes.
 	 *
 	 * @wp.hook action rest_api_init
