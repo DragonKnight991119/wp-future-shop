@@ -83,7 +83,7 @@ class Pages {
 	public static function add_menu_page() {
 		\add_menu_page(
 			__( 'Store', 'future-shop' ),
-			__( 'Store', 'future-shop' ),
+			__( 'Dashboard', 'future-shop' ),
 			self::CAP,
 			self::SLUG,
 			[ __CLASS__, 'app' ],
