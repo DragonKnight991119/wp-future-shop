@@ -44,13 +44,13 @@ class Pages {
 	 * @const array
 	 */
 	const CART_POSITIONS = [
-		"none"         => 'No Cart Bubble',
-		"top__left"     => 'Top Left',
-		"top__right"    => 'Top Right',
-		"middle__left"  => 'Middle Left',
-		"middle__right" => 'Middle Right',
-		"bottom__left"  => 'Bottom Left',
-		"bottom__right" => 'Bottom Right',
+		'none'          => 'No Cart Bubble',
+		'top__left'     => 'Top Left',
+		'top__right'    => 'Top Right',
+		'middle__left'  => 'Middle Left',
+		'middle__right' => 'Middle Right',
+		'bottom__left'  => 'Bottom Left',
+		'bottom__right' => 'Bottom Right',
 	];
 
 	/**
@@ -156,7 +156,7 @@ class Pages {
 		<form method="post" action="options.php">
 			<?php \settings_fields( Stripe::OPTION_NAME . '_group' ); ?>
 			<?php \do_settings_sections( Stripe::OPTION_NAME . '_group' ); ?>
-			<?php $cart_position = $stripe_settings['cart_position'] ?>
+			<?php $cart_position = $stripe_settings['cart_position']; ?>
 			<table class="form-table">
 				<tr valign="top">
 					<th scope="row">Stripe Public Key</th>
@@ -189,7 +189,7 @@ class Pages {
 							><?php echo esc_html( $value ); ?></option>
 						<?php endforeach; ?>
 					</select>
-					<p>Select a position for your cart bubble to appear.<br/>Otherwise, you can add a cart span menu item to your WordPress menus with:<br/><code><?php echo esc_html( '<span title="cart" class="future-shop-menu-cart"></span>' );?></code></p>
+					<p>Select a position for your cart bubble to appear.<br/>Otherwise, you can add a cart span menu item to your WordPress menus with:<br/><code><?php echo esc_html( '<span title="cart" class="future-shop-menu-cart"></span>' ); ?></code></p>
 					</td>
 				</tr>
 			</table>
