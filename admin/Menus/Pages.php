@@ -186,11 +186,11 @@ class Pages {
 							<?php
 								wp_dropdown_pages(
 									array(
-										'name'              => Stripe::OPTION_NAME . '[thank_you_page]',
+										'name'              => esc_attr( Stripe::OPTION_NAME . '[thank_you_page]' ),
 										'echo'              => 1,
 										'show_option_none'  => __( '&mdash; Select &mdash;' ),
 										'option_none_value' => '0',
-										'selected'          => $stripe_settings['thank_you_page'],
+										'selected'          => esc_attr( $stripe_settings['thank_you_page'] ),
 									)
 								);
 							?>
