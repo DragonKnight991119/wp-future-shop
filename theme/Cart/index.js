@@ -22,7 +22,7 @@ window.FutureShop = {
 		this.cart = JSON.parse( localStorage.getItem( this.localStorageKey ) || '[]' );
 
 		this.cartModal = document.getElementById( 'future-shop-cart-background' );
-		this.cartMenuButton = document.getElementsByClassName( 'menu-cart' );
+		this.cartMenuButton = document.getElementsByClassName( 'future-shop-menu-cart' );
 		this.cartClose = document.getElementById( 'cart-close' );
 		this.addToCartButton = document.getElementsByClassName( 'add-to-cart' );
 		this.checkoutButton = document.getElementById( 'future-shop-stripe-checkout-button' );

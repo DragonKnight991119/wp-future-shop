@@ -38,6 +38,16 @@ class Pages {
 	 */
 	const CAP = 'manage_options';
 
+	const CART_POSITIONS = [
+		"none"         => 'No Cart Bubble',
+		"top_left"     => 'Top Left',
+		"top_right"    => 'Top Right',
+		"middle_left"  => 'Middle Left',
+		"middle_right" => 'Middle Right',
+		"bottom_left"  => 'Bottom Left',
+		"bottom_right" => 'Bottom Right',
+	];
+
 	/**
 	 * Menu Constructor
 	 */
@@ -141,27 +151,41 @@ class Pages {
 		<form method="post" action="options.php">
 			<?php \settings_fields( Stripe::OPTION_NAME . '_group' ); ?>
 			<?php \do_settings_sections( Stripe::OPTION_NAME . '_group' ); ?>
-
+			<?php $cart_position = $stripe_settings['cart_position'] ?>
 			<table class="form-table">
 				<tr valign="top">
-				<th scope="row">Stripe Public Key</th>
-				<td><input type="text" name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[public_key]" value="<?php echo esc_attr( $stripe_settings['public_key'] ); ?>" /></td>
+					<th scope="row">Stripe Public Key</th>
+					<td><input type="text" class="regular-text" name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[public_key]" value="<?php echo esc_attr( $stripe_settings['public_key'] ); ?>" /></td>
 				</tr>
 				<tr valign="top">
-				<th scope="row">Stripe Secret Key</th>
-				<td><input type="text" name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[secret_key]" value="<?php echo esc_attr( $stripe_settings['secret_key'] ); ?>" /></td>
+					<th scope="row">Stripe Secret Key</th>
+					<td><input type="password" class="regular-text" name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[secret_key]" value="<?php echo esc_attr( $stripe_settings['secret_key'] ); ?>" /></td>
 				</tr>
 				<tr valign="top">
-				<th scope="row">Store Currency</th>
-				<td><select name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[currency]" />
-					<option>--Select a currency--</option>
-					<?php foreach ( $pres_currencies as $key => $value ) : ?>
-					<option
-						value="<?php echo esc_attr( $key ); ?>"
-						<?php echo ( $key === $stripe_settings['currency'] ) ? 'selected' : ''; ?>
-						><?php echo esc_html( $value ); ?></option>
-					<?php endforeach; ?>
-				</select></td>
+					<th scope="row">Store Currency</th>
+					<td><select name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[currency]" />
+						<option>--Select a currency--</option>
+						<?php foreach ( $pres_currencies as $key => $value ) : ?>
+						<option
+							value="<?php echo esc_attr( $key ); ?>"
+							<?php echo ( $key === $stripe_settings['currency'] ) ? 'selected' : ''; ?>
+							><?php echo esc_html( $value ); ?></option>
+						<?php endforeach; ?>
+					</select></td>
+				</tr>
+				<tr valign="top">
+					<th scope="row">Cart Bubble Position</th>
+					<td><select name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[cart_position]"/>
+						<option>--Select a cart position--</option>
+						<?php foreach ( self::CART_POSITIONS as $key => $value ) : ?>
+						<option
+							value="<?php echo esc_attr( $key ); ?>"
+							<?php echo ( $key === $stripe_settings['cart_position'] ) ? 'selected' : ''; ?>
+							><?php echo esc_html( $value ); ?></option>
+						<?php endforeach; ?>
+					</select>
+					<p>Select a position for your cart bubble to appear.<br/>Otherwise, you can add a cart span menu item to your WordPress menus with:<br/><code><?php echo esc_html( '<span title="cart" class="future-shop-menu-cart"></span>' );?></code></p>
+					</td>
 				</tr>
 			</table>
 
