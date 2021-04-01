@@ -18,6 +18,21 @@ use FutureShop\Config\Stripe;
 class Settings {
 
 	/**
+	 * Cart position options.
+	 *
+	 * @const array
+	 */
+	const CART_POSITIONS = [
+		'none'          => 'No Cart Bubble',
+		'top__left'     => 'Top Left',
+		'top__right'    => 'Top Right',
+		'middle__left'  => 'Middle Left',
+		'middle__right' => 'Middle Right',
+		'bottom__left'  => 'Bottom Left',
+		'bottom__right' => 'Bottom Right',
+	];
+
+	/**
 	 * Loads the settings.
 	 *
 	 * @return void
