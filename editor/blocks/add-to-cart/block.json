@@ -7,6 +7,6 @@
 	"keywords": [ "cart", "add to cart", "button" ],
 	"textdomain": "future-shop",
 	"assets": {
-		"script": [ "wp-blocks" ]
+		"editor_script": [ "wp-blocks" ]
 	}
 }
