@@ -11,7 +11,7 @@ registerBlockType( block.name, {
 	edit : () => {
 		return (
 			<div className="wp-block-button">
-				<a href="">Add to Cart</a>
+				<a href="">Coming Soon</a>
 			</div>
 		);
 	},
@@ -22,14 +22,14 @@ registerBlockType( block.name, {
 				<button
 					class="add-to-cart"
 					data-img-src=""
-					data-prod-id="prod_IuAjFZZToznvgq"
-					data-title="Thing 1"
+					data-prod-id=""
+					data-title="Coming Soon"
 					data-quantity="1"
-					data-price-id="price_0IIMSvFQiA51kwBGiUFq8iNK"
-					data-price="599"
-					data-link="/product-1/"
+					data-price-id=""
+					data-price=""
+					data-link=""
 					>
-					Thing 1
+					Coming Soon
 				</button>
 			</div>
 		);
