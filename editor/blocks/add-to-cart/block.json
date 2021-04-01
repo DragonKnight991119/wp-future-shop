@@ -1,0 +1,12 @@
+{
+	"name": "future-shop/add-to-cart",
+	"title": "Add to Cart",
+	"category": "future-shop",
+	"icon": "cart",
+	"description": "Button for adding the current product to the Future Shop cart.",
+	"keywords": [ "cart", "add to cart", "button" ],
+	"textdomain": "future-shop",
+	"assets": {
+		"editor_script": [ "wp-blocks" ]
+	}
+}

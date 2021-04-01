@@ -19,9 +19,13 @@ class Data {
 	 */
 	public static function submenu_pages() {
 		return [
-			__( 'products', 'future-shop' ),
-			__( 'customers', 'future-shop' ),
-			__( 'settings', 'future-shop' ),
+			'products' => [
+				'title' => __( 'Products', 'future-shop' ),
+			],
+			'settings' => [
+				'class' => __NAMESPACE__ . '\Settings',
+				'title' => __( 'Settings', 'future-shop' ),
+			],
 		];
 	}
 }

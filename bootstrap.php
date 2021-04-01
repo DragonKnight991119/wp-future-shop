@@ -44,6 +44,7 @@ class Bootstrap {
 	 */
 	public static function admin() {
 		new Menus\Pages( __CLASS__ );
+		new Products\Register( __CLASS__ );
 	}
 
 	/**
@@ -53,6 +54,15 @@ class Bootstrap {
 	 */
 	public static function theme() {
 		new Theme\Cart\Init( __CLASS__ );
+	}
+
+	/**
+	 * Loads the editor.
+	 *
+	 * @wp.hook action init
+	 */
+	public static function editor() {
+		require_once __DIR__ . '/editor/load.php';
 	}
 
 	/**

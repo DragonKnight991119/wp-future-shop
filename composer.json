@@ -42,6 +42,9 @@
         "post-update-or-install": [
             "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
         ],
-        "lint": "./vendor/bin/phpcs ."
+        "lint": "./vendor/bin/phpcs .",
+        "release": [
+            "composer install --no-dev --prefer-dist --optimize-autoloader"
+        ]
     }
 }

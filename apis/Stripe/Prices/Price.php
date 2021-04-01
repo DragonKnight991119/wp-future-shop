@@ -36,8 +36,11 @@ class Price extends Core {
 			'namespace' => 'stripe/v7',
 			'route'     => '/price',
 			'args'      => [
-				'methods'  => 'POST',
-				'callback' => [ __CLASS__, 'create' ],
+				'methods'             => 'POST',
+				'callback'            => [ __CLASS__, 'create' ],
+				'permission_callback' => function() {
+					return current_user_can( 'administrator' );
+				},
 			],
 		];
 	}
