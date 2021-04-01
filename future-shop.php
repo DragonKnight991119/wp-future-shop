@@ -7,7 +7,7 @@
  * @license MPL-2.0
  *
  * Plugin Name:       Future Shop
- * Plugin URI:        https://juko.co/wp/plugins/future-shop
+ * Plugin URI:        https://wordpress.org/plugins/future-shop
  * Description:       Simple. Fast. Secure. Run your store with Future Shop, the only plugin with native Stripe integration to manage your business using WordPress.
  * Version:           0.0.1
  * Requires PHP:      7.2
