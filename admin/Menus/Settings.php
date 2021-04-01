@@ -51,6 +51,7 @@ class Settings {
 		$stripe_settings   = Stripe::get_options();
 		$pres_currencies   = Stripe::get_presentment_currencies();
 		$selected_currency = $stripe_settings['currency'] ?? '';
+		$cart_position     = $stripe_settings['cart_position'] ?? '';
 
 		?>
 		<div class="wrap">
@@ -59,27 +60,28 @@ class Settings {
 			<form method="post" action="options.php">
 				<?php \settings_fields( Stripe::OPTION_NAME . '_group' ); ?>
 				<?php \do_settings_sections( Stripe::OPTION_NAME . '_group' ); ?>
-				<?php $cart_position = $stripe_settings['cart_position']; ?>
+				<?php $cart_position = $stripe_settings['cart_position'] ?? ''; ?>
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row">Stripe Public Key</th>
-						<td><input type="text" class="regular-text" name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[public_key]" value="<?php echo esc_attr( $stripe_settings['public_key'] ); ?>" /></td>
+						<td><input type="text" class="regular-text" name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[public_key]" value="<?php echo esc_attr( $stripe_settings['public_key'] ?? '' ); ?>" /></td>
 					</tr>
 					<tr valign="top">
 						<th scope="row">Stripe Secret Key</th>
-						<td><input type="password" class="regular-text" name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[secret_key]" value="<?php echo esc_attr( $stripe_settings['secret_key'] ); ?>" /></td>
+						<td><input type="password" class="regular-text" name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[secret_key]" value="<?php echo esc_attr( $stripe_settings['secret_key'] ?? '' ); ?>" /></td>
 					</tr>
 					<tr valign="top">
 						<th scope="row">Store Currency</th>
-						<td><select name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[currency]" />
-							<option>--Select a currency--</option>
-							<?php foreach ( $pres_currencies as $key => $value ) : ?>
-							<option
-								value="<?php echo esc_attr( $key ); ?>"
-								<?php echo ( $key === $stripe_settings['currency'] ) ? 'selected' : ''; ?>
-								><?php echo esc_html( $value ); ?></option>
-							<?php endforeach; ?>
-						</select></td>
+						<td>
+						<select name="<?php echo esc_attr( Stripe::OPTION_NAME ); ?>[currency]" />
+								<option selected disabled>Choose Currency</option>
+								<?php foreach ( $pres_currencies as $key => $value ) : ?>
+									<option value="<?php echo esc_attr( $key ); ?>" <?php echo ( $key === $selected_currency ) ? 'selected' : ''; ?>>
+										<?php echo esc_html( $value ); ?>
+									</option>
+								<?php endforeach; ?>
+							</select>
+						</td>
 					</tr>
 					<tr valign="top">
 						<th scope="row">Thank You Page</th>
@@ -91,7 +93,7 @@ class Settings {
 										'echo'             => 1,
 										'show_option_none' => esc_attr( '&mdash; Select &mdash;' ),
 										'option_none_value' => '0',
-										'selected'         => esc_attr( $stripe_settings['thank_you_page'] ),
+										'selected'         => esc_attr( $stripe_settings['thank_you_page'] ?? '' ),
 									)
 								);
 							?>
@@ -105,7 +107,7 @@ class Settings {
 							<?php foreach ( self::CART_POSITIONS as $key => $value ) : ?>
 							<option
 								value="<?php echo esc_attr( $key ); ?>"
-								<?php echo ( $key === $stripe_settings['cart_position'] ) ? 'selected' : ''; ?>
+								<?php echo ( $key === $cart_position ) ? 'selected' : ''; ?>
 								><?php echo esc_html( $value ); ?></option>
 							<?php endforeach; ?>
 						</select>
