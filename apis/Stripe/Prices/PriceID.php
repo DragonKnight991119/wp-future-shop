@@ -41,16 +41,25 @@ class PriceID extends Core {
 			'route'     => '/price/(?P<id>[\a-zA-Z0-9_]+)',
 			'args'      => [
 				[
-					'methods'  => 'GET',
-					'callback' => [ __CLASS__, 'single' ],
+					'methods'             => 'GET',
+					'callback'            => [ __CLASS__, 'single' ],
+					'permission_callback' => function() {
+						return current_user_can( 'administrator' );
+					},
 				],
 				[
-					'methods'  => 'POST',
-					'callback' => [ __CLASS__, 'update' ],
+					'methods'             => 'POST',
+					'callback'            => [ __CLASS__, 'update' ],
+					'permission_callback' => function() {
+						return current_user_can( 'administrator' );
+					},
 				],
 				[
-					'methods'  => 'DELETE',
-					'callback' => [ __CLASS__, 'delete' ],
+					'methods'             => 'DELETE',
+					'callback'            => [ __CLASS__, 'delete' ],
+					'permission_callback' => function() {
+						return current_user_can( 'administrator' );
+					},
 				],
 			],
 		];

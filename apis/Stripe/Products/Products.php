@@ -35,8 +35,11 @@ class Products extends Core {
 			'namespace' => 'stripe/v7',
 			'route'     => '/products',
 			'args'      => [
-				'methods'  => 'GET',
-				'callback' => [ __CLASS__, 'all' ],
+				'methods'             => 'GET',
+				'callback'            => [ __CLASS__, 'all' ],
+				'permission_callback' => function() {
+					return current_user_can( 'administrator' );
+				},
 			],
 		];
 	}

@@ -27,13 +27,6 @@ abstract class API {
 			if ( substr( $route, 0, 14 ) === 'register_route' ) {
 				$register = call_user_func( [ $class, $route ] );
 
-				// Set a default persmissions callback, if one does not exist.
-				if ( empty( $register['args']['permission_callback'] ) ) {
-					$register['args']['permission_callback'] = function() {
-						return current_user_can( 'administrator' );
-					};
-				}
-
 				return register_rest_route(
 					$register['namespace'],
 					$register['route'],
