@@ -4,28 +4,41 @@
 window.FutureShop = {
 	// Set initial properties and state
 	addToCartButton : '',
+	cancelPage      : '',
 	cart            : [],
 	cartCloseButton : '',
 	cartIsOpen      : false,
 	cartMenuButton  : '',
 	cartModal       : '',
+	cartPosition    : 'none',
 	cartQuantity    : 0,
 	cartSubtotal    : 0,
 	checkoutButton  : '',
 	localStorageKey : 'futureShopCart',
+	thankYouPage    : '',
 
 	initialize() {
 		this.setInitialProps();
+		this.setCartBubble();
 		this.addInitialListeners();
 	},
 	setInitialProps() {
+		// Clear the cart if a successful checkout.
+		if ( '?checkout=success' === window.location.search ) {
+			localStorage.removeItem( this.localStorageKey );
+		}
+
 		this.cart = JSON.parse( localStorage.getItem( this.localStorageKey ) || '[]' );
 
 		this.cartModal = document.getElementById( 'future-shop-cart-background' );
-		this.cartMenuButton = document.getElementsByClassName( 'menu-cart' );
+		this.cartMenuButton = document.getElementsByClassName( 'future-shop-menu-cart' );
 		this.cartClose = document.getElementById( 'cart-close' );
 		this.addToCartButton = document.getElementsByClassName( 'add-to-cart' );
 		this.checkoutButton = document.getElementById( 'future-shop-stripe-checkout-button' );
+		this.cartPosition = window.future_shop.cart_position;
+
+		this.cancelPage = window.location.href;
+		this.thankYouPage = window.future_shop.thank_you_page;
 	},
 	addInitialListeners() {
 		this.cartClose.addEventListener( 'click', ( e ) => {
@@ -59,6 +72,17 @@ window.FutureShop = {
 			this.checkoutButton.disabled = true;
 			console.error( 'Oh no, it looks like Stripe has not be added or is not responding' );
 		}
+	},
+	setCartBubble() {
+		if ( 'none' === this.cartPosition ) {
+			return;
+		}
+
+		const body = document.querySelector( 'body' );
+		const cartBubble = document.createElement( 'div' );
+		cartBubble.classList.add( 'future-shop-cart-bubble', this.cartPosition );
+		cartBubble.innerHTML = '<button class="future-shop-menu-cart"></button>';
+		body.appendChild( cartBubble );
 	},
 	openCart( e ) {
 		e.preventDefault();
@@ -286,8 +310,8 @@ window.FutureShop = {
 		this.stripe.redirectToCheckout( {
 			lineItems,
 			mode                      : 'payment',
-			// successUrl                : 'https://futureshop.local/thank-you',
-			// cancelUrl                 : 'https://futureshop.local/shop',
+			successUrl                : this.thankYouPage + '?checkout=success',
+			cancelUrl                 : this.cancelPage,
 			billingAddressCollection  : 'required',
 			shippingAddressCollection : {
 				allowedCountries : [ 'US', 'CA' ],

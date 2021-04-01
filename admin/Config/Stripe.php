@@ -46,11 +46,11 @@ class Stripe {
 	public static function get_presentment_currencies() {
 		return [
 			'usd' => 'US Dollar (USD)',
-			'cad' => 'Canadian Dollar (CAD)',
-			'gbp' => 'British Pound (GBP)',
-			'eur' => 'Euro (EUR)',
-			'krw' => 'Korean Won (KRW)',
-			'jpy' => 'Japanese Yen (JPY)',
+			'cad' => 'Canadian Dollar (CAD) (coming soon)',
+			'gbp' => 'British Pound (GBP) (coming soon)',
+			'eur' => 'Euro (EUR) (coming soon)',
+			'krw' => 'Korean Won (KRW) (coming soon)',
+			'jpy' => 'Japanese Yen (JPY) (coming soon)',
 		];
 	}
 

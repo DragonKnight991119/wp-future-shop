@@ -3,7 +3,7 @@
  * Future Shop
  *
  * @package FutureShop
- * @author  Justin Kopepasah
+ * @author  Future Shop Contributors
  * @license MPL-2.0
  *
  * Plugin Name:       Future Shop
@@ -12,8 +12,8 @@
  * Version:           0.0.1
  * Requires PHP:      7.2
  * Requires at least: 5.4
- * Author:            Justin Kopepasah
- * Author URI:        https://kopepasah.com
+ * Author:            Future Shop Contributors
+ * Author URI:        https://github.com/future-shop/wp-future-shop/graphs/contributors
  * Text Domain:       future-shop
  * License:           MPL-2.0
  * License URI:       https://www.mozilla.org/en-US/MPL/2.0/
