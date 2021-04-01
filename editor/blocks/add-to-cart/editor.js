@@ -6,12 +6,12 @@ const { registerBlockType } = wp.blocks;
 registerBlockType( block.name, {
 	...block,
 
-	attributes: {},
+	attributes : {},
 
 	edit : () => {
 		return (
 			<div className="wp-block-button">
-				<a href="">Coming Soon</a>
+				<p>Coming Soon</p>
 			</div>
 		);
 	},
@@ -20,7 +20,7 @@ registerBlockType( block.name, {
 		return (
 			<div className="wp-block">
 				<button
-					class="add-to-cart"
+					className="add-to-cart"
 					data-img-src=""
 					data-prod-id=""
 					data-title="Coming Soon"
@@ -28,7 +28,7 @@ registerBlockType( block.name, {
 					data-price-id=""
 					data-price=""
 					data-link=""
-					>
+				>
 					Coming Soon
 				</button>
 			</div>

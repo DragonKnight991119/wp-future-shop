@@ -70,7 +70,7 @@ window.FutureShop = {
 			this.setupCheckoutButton();
 		} else {
 			this.checkoutButton.disabled = true;
-			console.error( 'Oh no, it looks like Stripe has not be added or is not responding' );
+			console.error( 'Oh no, it looks like Stripe has not be added or is not responding' ); // eslint-disable-line no-console
 		}
 	},
 	setCartBubble() {
@@ -127,9 +127,9 @@ window.FutureShop = {
 							<label for="" class="hidden">Quantity</label>
 
 							<button class="item-decrement" type="button" data-price-id="${ item.priceId }" aria-label="Reduce item quantity by one" title="Reduce item quantity by one">-</button>
-							
+
 							<input type="text" class="item-quantity-input" min="0" value="${ item.quantity }" readonly>
-							
+
 							<button class="item-increment" type="button" data-price-id="${ item.priceId }" aria-label="Increase item quantity by one" title="Increase item quantity by one">+</button>
 						</div>
 						<div class="remove-item">
@@ -319,7 +319,7 @@ window.FutureShop = {
 			submitType : 'pay',
 			// customerEmail : 'customer@example.com',
 		} ).then( function( result ) {
-			console.error( 'There has been an error with FutureShop payments', result );
+			console.error( 'There has been an error with FutureShop payments', result ); // eslint-disable-line no-console
 		} );
 	},
 	getCartQuantity() {
